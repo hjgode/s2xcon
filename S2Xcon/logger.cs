@@ -38,6 +38,7 @@ namespace S2Xcon
         public static void add2log(string s)
         {
             System.Diagnostics.Debug.WriteLine(s);
+            
             System.IO.StreamWriter sw = new System.IO.StreamWriter(_LogPath + _LogFile, true);
             sw.WriteLine(s);
             sw.Flush();

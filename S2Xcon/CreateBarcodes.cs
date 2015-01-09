@@ -82,12 +82,17 @@ namespace S2Xcon
             }
         }
 
-        public void Save2PDF(string sPDF_Filename)
+        public bool Save2PDF(string sPDF_Filename)
         {
+            bool bReturn = true;
             try
             {
                 if (System.IO.File.Exists(sPDF_Filename))
+                {
                     System.IO.File.Delete(sPDF_Filename);
+                    logger.add2log("existing file '" + sPDF_Filename + "' deleted");
+                }
+
                 MemoryStream memoryStream = this.SaveAsPDF();
                 if (memoryStream != null)
                 {
@@ -100,21 +105,29 @@ namespace S2Xcon
                     logger.add2log("PDF created: '" + sPDF_Filename + "'");
                 }
                 else
+                {
                     logger.add2log("memoryStream=null, NO PDF created: '" + sPDF_Filename + "'");
+                    bReturn = false;
+                }
             }
-            catch (Exception exception1)
+            catch (Exception exception)
             {
-                Exception exception = exception1;
-                //MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 logger.add2log("NO PDF created: '" + sPDF_Filename + "'" + "\r\n" +
                     exception.Message);
+                bReturn = false;
             }
+            return bReturn;
         }
 
         MemoryStream SaveAsPDF()
         {
             MemoryStream pDF;
             S2X.S2X s2X = this.Update();
+            if (s2X == null)
+            {
+                logger.add2log("No PDF stream from Update()");
+                return null;
+            }
             try
             {
                 pDF = s2X.ToPDF();
@@ -145,6 +158,7 @@ namespace S2Xcon
                     inputData = xDocument.ToString();
                 }
                 this.VersionNumber = this.VersionNum();
+                logger.add2log("S2X: version=" + this.VersionNumber.ToString());
 
                 string[] names = Enum.GetNames(typeof(Symbol));
                 for (int i = 0; i < (int)names.Length; i++)
@@ -154,6 +168,8 @@ namespace S2Xcon
                     
                     s2xPages.IsNoReboot = this.IsNoReboot;
                     s2xPages.IsNoStartBarcode = this.IsNoStartBarcode;
+                    logger.add2log("S2X: IsNoReboot=" + this.IsNoReboot.ToString()+
+                        ", IsNoStartBarcode="+this.IsNoStartBarcode.ToString());
 
                     Symbol symbol = (Symbol)Enum.Parse(typeof(Symbol), str1);
 
@@ -171,25 +187,28 @@ namespace S2Xcon
                     }
                 }
                 logger.add2log("PDF will be " + EstimatedPDF417 + " pages");
+                logger.add2log("writing temp file");
                 System.IO.File.WriteAllText(System.IO.Path.GetTempFileName(), inputData);
                 string name = Enum.GetName(typeof(Symbol), this._BarcodeType);
+                logger.add2log("getting PDF417");
                 S2X.S2X item = this.barcodeResult[name] as S2X.S2X;
+                logger.add2log("S2X PDF417 done");
                 return item;
             }
             catch (XmlException xmlException)
             {
                 Common.WriteEntryToLog(xmlException.ToString(), EventLogEntryType.Error);
                 //MessageBox.Show("Invalid data", "s2xcon", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                logger.add2log("Update(): Invalid data\r\n"+xmlException.Message);
+                logger.add2log("Update(): XmlException-Invalid data\r\n" + xmlException.Message);
             }
             catch (Exception exception1)
             {
                 Exception exception = exception1;
                 Common.WriteEntryToLog(exception.ToString(), EventLogEntryType.Error);
                 //MessageBox.Show(exception.Message, "s2xcon", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                logger.add2log("Update(): Invalid data\r\n" + exception.Message);
+                logger.add2log("Update(): Exception-Invalid data\r\n" + exception.Message);
             }
-            return new S2X.S2X();//ERROR!
+            return null;//ERROR!
         }
 
         public int VersionNum()

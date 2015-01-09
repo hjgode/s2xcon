@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("S2Xcon")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Intermec Technologies")]
+[assembly: AssemblyCompany("ITC Software Support")]
 [assembly: AssemblyProduct("S2Xcon")]
-[assembly: AssemblyCopyright("Copyright © Intermec Technologies 2015")]
+[assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

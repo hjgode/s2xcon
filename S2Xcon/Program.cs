@@ -11,11 +11,12 @@ namespace S2Xcon
 {
     class Program
     {
-        private static readonly HeadingInfo HeadingInfo = new HeadingInfo("sampleapp", "0.1");
+        private static readonly HeadingInfo HeadingInfo = new HeadingInfo("s2xcon", "0.1");
         
         [STAThread]
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
+            int iReturn=0;
             Console.WriteLine("\r\nS2Xcon started");
             var options = new Options();
             Console.WriteLine("parsing options...");
@@ -23,24 +24,25 @@ namespace S2Xcon
 
             if (parser.ParseArgumentsStrict(args, options, () => Console.WriteLine(options.GetUsage())))
             {
-                Run(options);
+                iReturn = Run(options);
             }
-            Console.WriteLine("S2Xcon DONE");
-            return;
+            else
+                iReturn = -3;
+            Console.WriteLine("S2Xcon DONE with code="+iReturn.ToString());
+            return iReturn;
         }
 
-        private static void Run(Options options)
+        private static int Run(Options options)
         {
+            int iReturn = 0;
 
             Console.WriteLine("input file: {0} ...", options.InputFile);
-
             Console.WriteLine("  output file: {0}", options.OutputFile);
             Console.WriteLine("  log file: {0}", options.logfile);
             Console.WriteLine("  message: {0}", options.message);
             Console.WriteLine("  password: {0}", options.password);
             Console.WriteLine("  nostartcode: {0}", options.nostartcode);
             Console.WriteLine("  noreboot: {0}", options.noreboot);
-
             Console.WriteLine();
 
             if (options.InputFile!=null)
@@ -91,45 +93,60 @@ namespace S2Xcon
                     {
                         sPDFname = options.OutputFile;
                         Console.WriteLine("writing PDF to '"+sPDFname+"'");
-                        cBarcode.Save2PDF(sPDFname);
+                        if (cBarcode.Save2PDF(sPDFname))
+                            Console.WriteLine("...done");
+                        else
+                        {
+                            Console.WriteLine("...failed");
+                            iReturn = -1;   //error
+                        }
                     }
                     else
                     {
                         sPDFname = sPath + System.IO.Path.GetFileNameWithoutExtension(sFilename) + ".pdf";
                         Console.WriteLine("writing PDF to '" + sPDFname + "'");
-                        cBarcode.Save2PDF(sPDFname);
+                        if(cBarcode.Save2PDF(sPDFname))
+                            Console.WriteLine("...done");
+                        else
+                        {
+                            Console.WriteLine("...failed");
+                            iReturn = -1;   //error
+                        }
                     }
-                }
+                }//file exists
                 else
                 {
                     Console.WriteLine("Invalid file: '" + sFilename + "'");
-                }
+                    iReturn = -2;
+                }//if file exists
             }
-
+            logger.add2log("\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() +
+                " +++ S2Xcon ended with " + iReturn.ToString() + " +++");
+            return iReturn;
         }
+    } // end class
 
-    }
     class Options
     {
-        [Option('i', "input", MetaValue = "FILE", Required = true, HelpText = "Input file with data to process.")]
+        [Option('i', "input", MetaValue = "FILE", Required = true, HelpText = "Input file with data to process. No default.")]
         public string InputFile { get; set; }
 
-        [Option('o', "output", MetaValue = "FILE", HelpText = "Output FILE with processed data (otherwise standard output).")]
+        [Option('o', "output", MetaValue = "FILE", HelpText = "Output FILE with processed data (default: name of input as .pdf).")]
         public string OutputFile { get; set; }
 
-        [Option('m', "message", MetaValue = "STRING", HelpText = "Add message to print.")]
+        [Option('m', "message", MetaValue = "STRING", HelpText = "Add message to print. default: 'printed from s2con'")]
         public string message { get; set; }
 
-        [Option('p', "password", MetaValue = "STRING", HelpText = "Use password")]
+        [Option('p', "password", MetaValue = "STRING", HelpText = "Use password. default: '' (no password)")]
         public string password { get; set; }
 
-        [Option('l', "logfile", MetaValue = "STRING", HelpText = "Use password")]
+        [Option('l', "logfile", MetaValue = "STRING", HelpText = "log file name. default: name of input as .log")]
         public string logfile { get; set; }
 
-        [Option('n', "nostartcode", HelpText = "no start barcode")]
+        [Option('n', "nostartcode", HelpText = "no start barcode. default: print start barcode")]
         public bool nostartcode { get; set; }
 
-        [Option('r', "rebootno", HelpText = "no reboot")]
+        [Option('r', "rebootno", HelpText = "no reboot. default: device will reboot")]
         public bool noreboot { get; set; }
 
         [ValueList(typeof(List<string>))]
