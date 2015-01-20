@@ -18,6 +18,11 @@ namespace S2Xcon
                 {
                     string s;
                     s = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    if (s.ToLower().StartsWith("file"))
+                    {
+                        Uri uri = new Uri(s);
+                        s = uri.AbsolutePath;
+                    }
                     if (!s.EndsWith(@"\"))
                         s += @"\";
                     _LogPath = s;
@@ -25,7 +30,7 @@ namespace S2Xcon
                 }
             }
         }
-        static string _LogFile = "";
+        static string _LogFile = "default.log";
 
         public static void setLogPath(string s)
         {
@@ -39,7 +44,7 @@ namespace S2Xcon
         {
             System.Diagnostics.Debug.WriteLine(s);
             
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(_LogPath + _LogFile, true);
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(LogPath + _LogFile, true);
             sw.WriteLine(s);
             sw.Flush();
             sw.Close();

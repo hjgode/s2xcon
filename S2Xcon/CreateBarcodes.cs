@@ -13,6 +13,8 @@ using System.Windows;
 using System.Drawing;
 using System.IO;
 
+using Newtonsoft.Json.Linq;
+
 namespace S2Xcon
 {
     class CreateBarcodes
@@ -44,25 +46,11 @@ namespace S2Xcon
             IsNoReboot = bNoReboot;
             IsNoStartBarcode = bNostart;
 
-            InputData = GetBarCodeData(sFileName);
+            MainViewModel mvm = new MainViewModel();
+            InputData = mvm.GetBarCodeData(sFileName);
+            //BarcodeOptionViewModel::Update()
         }
 
-        public string GetBarCodeData(string sFileName)
-        {
-            string empty = string.Empty;
-            empty = this.GetBrowseData(sFileName);
-            //empty = string.Format("<DevInfo>{0}</DevInfo>", empty);
-            return empty;
-        }
-
-        private string GetBrowseData(string sFileName)
-        {
-            if (!string.IsNullOrEmpty(sFileName))
-            {
-                return System.IO.File.ReadAllText(sFileName);
-            }
-            return null;
-        }
 
         public void PrintPreview()
         {
@@ -149,13 +137,21 @@ namespace S2Xcon
             try
             {
                 string str = "";
-                string inputData = this.InputData;//the xml to convert
+                string inputData = this.InputData;//the data to convert
                 if (!string.IsNullOrEmpty(str))
                 {
-                    XDocument xDocument = XDocument.Parse(inputData);
-                    XDocument xDocument1 = XDocument.Parse(str);
-                    xDocument.Root.Add(xDocument1.Root);
-                    inputData = xDocument.ToString();
+                    if (Common.IsXmlString(inputData))
+                    {
+                        XDocument xDocument = XDocument.Parse(inputData);
+                        XDocument xDocument1 = XDocument.Parse(str);
+                        xDocument.Root.Add(xDocument1.Root);
+                        inputData = xDocument.ToString();
+                    }
+                    else
+                    {
+                        inputData = Common.TransformJsonText(inputData);
+                        IsNoStartBarcode = true;
+                    }
                 }
                 this.VersionNumber = this.VersionNum();
                 logger.add2log("S2X: version=" + this.VersionNumber.ToString());
@@ -165,7 +161,7 @@ namespace S2Xcon
                 {
                     string str1 = names[i];
                     s2xPages = (!this.barcodeResult.ContainsKey(str1) ? new S2X.S2X() : this.barcodeResult[str1] as S2X.S2X);
-                    
+
                     s2xPages.IsNoReboot = this.IsNoReboot;
                     s2xPages.IsNoStartBarcode = this.IsNoStartBarcode;
                     logger.add2log("S2X: IsNoReboot=" + this.IsNoReboot.ToString()+
@@ -211,13 +207,26 @@ namespace S2Xcon
             return null;//ERROR!
         }
 
+
+
         public int VersionNum()
         {
-            if (!this.IsNoReboot && !this.IsNoStartBarcode)
+            if (Common.IsInStandaloneMode)
             {
-                return 1;
+                if (Common.UsingJson)
+                {
+                    return 4;
+                }
+                return 3;
             }
-            return 3;
+            else
+            {
+                if (!this.IsNoReboot && !this.IsNoStartBarcode)
+                {
+                    return 1;
+                }
+                return 3;
+            }
         }
     }
 }
