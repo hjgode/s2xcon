@@ -1,0 +1,34 @@
+{
+  "action": "set",
+  "subsystems": {
+    "WiFi": {
+      "base": 0,    
+      "v": 0,      
+      "mode": "full",
+      "nets": [
+        {
+          "ssid": "\"MyNetworkName1\"",
+          "pri": 3,
+          "hid": 0,
+          "auth": "OPEN,SHARED",
+          "km": "NONE",
+          "wepk": [
+             "*",
+             "",
+             "",
+             ""
+          ]
+        },
+        {
+          "ssid": "\"MyNetworkName2\"",
+          "pri": 1,
+          "hid": 0,
+          "auth": "",
+          "km": "WPA_PSK",
+          "pskey": "*"
+        }
+      ]
+    }
+  },
+  "version": "1.0"
+}

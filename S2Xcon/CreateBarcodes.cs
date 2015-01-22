@@ -13,12 +13,14 @@ using System.Windows;
 using System.Drawing;
 using System.IO;
 
+using Logger;
+
 namespace S2Xcon
 {
     class CreateBarcodes
     {
         string InputData = "";
-        int VersionNumber = 2;
+        int VersionNumber = 3;
 
         bool IsNoReboot = false;
         bool IsNoStartBarcode = true;
@@ -35,51 +37,105 @@ namespace S2Xcon
             get { return _BarcodeType; }
         }
 
+        /// <summary>
+        /// read file and provide converted data for call to s2x
+        /// </summary>
+        /// <param name="sFileName"></param>
+        /// <param name="sMessage"></param>
+        /// <param name="sPassword"></param>
+        /// <param name="bNostart"></param>
+        /// <param name="bNoReboot"></param>
         public CreateBarcodes(string sFileName, string sMessage, string sPassword, bool bNostart, bool bNoReboot)
         {
             if(sMessage!=null)
                 Instruction = sMessage;
             if (sPassword != null)
                 Password = sPassword;
-            IsNoReboot = bNoReboot;
-            IsNoStartBarcode = bNostart;
+            this.IsNoReboot= bNoReboot;
+            this.IsNoStartBarcode = bNostart;
 
             InputData = GetBarCodeData(sFileName);
         }
 
+        bool UsingJson = false;
+
         public string GetBarCodeData(string sFileName)
         {
-            string empty = string.Empty;
-            empty = this.GetBrowseData(sFileName);
+            logger.add2log("GetBarCodeData() in=" + sFileName);
+            string text = string.Empty;
+            text = this.GetBrowseData(sFileName);
             //empty = string.Format("<DevInfo>{0}</DevInfo>", empty);
-            return empty;
+            if (!Common.UsingJson)
+            {
+                text = Common.WrapXmlInDevInfo(text);
+            }
+
+            Logger.logger.add2log("MainViewModel::GetBarCodeData() out=" + text);
+            logger.add2log("GetBarCodeData() out=" + text);
+            return text;
         }
 
+        /// <summary>
+        /// read all input from file and perfom checks and set global flags
+        /// </summary>
+        /// <param name="sFileName"></param>
+        /// <returns></returns>
         private string GetBrowseData(string sFileName)
         {
+            Logger.logger.add2log("CreateBarcodes::GetBrowseData()");
             if (!string.IsNullOrEmpty(sFileName))
             {
-                return System.IO.File.ReadAllText(sFileName);
-            }
-            return null;
-        }
-
-        public void PrintPreview()
-        {
-            List<System.Drawing.Image> imgList = this.Update().GetPages(); // (new PrintingModel()).PrintPreview(this.Update().GetPages());
-            int i = 0;
-            foreach (System.Drawing.Image img in imgList)
-            {
-                string filename="img"+i.ToString()+".gif";
                 try
                 {
-                    System.IO.File.Delete(filename);
+                    string text = File.ReadAllText(sFileName);
+                    bool flag = Common.IsJsonString(text);
+                    bool flag2 = Common.IsXmlString(text);
+                    string result;
+                    if (flag || flag2)
+                    {
+                        if (flag)
+                        {
+                            if (!Common.IsJsonActionValid(text))
+                            {
+                                //MessageBox.Show("This JSON file is not valid for bar code generation since the action value is not \"set\"", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
+                                logger.add2log("This JSON file is not valid for bar code generation since the action value is not \"set\"");
+                                result = null;
+                                return result;
+                            }
+                            Common.UsingJson = true;
+                            text = Common.TransformJsonText(text);
+                            //setting defaults for JSON comm settings file
+                            logger.add2log("CreateBarcodes::GetBrowseData() setting defaults for JSON, noReboot=false, noStartBarcode=true");
+                            this.IsNoReboot = false;
+                            this.IsNoStartBarcode = true;
+                        }
+                        else
+                        {
+                            Common.UsingJson = false;
+                            text = Common.PrepareXmlContent(text);
+                        }
+                            
+                        FileInfo fileInfo = new FileInfo(sFileName);
+                        Common.SettingsSourceName = fileInfo.Name;
+                        result = text;
+                        return result;
+                    }
+                    //MessageBox.Show("The file is not a valid JSON or XML file.", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
+                    Logger.logger.add2log("The file is not a valid JSON or XML file.");
+                    result = null;
+                    return result;
                 }
                 catch (Exception)
                 {
+                    //MessageBox.Show("The file could not be read.", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
+                    Logger.logger.add2log("The file could not be read.");
+                    string result = null;
+                    return result;
                 }
-                img.Save(filename, System.Drawing.Imaging.ImageFormat.Gif);
             }
+            //MessageBox.Show("No file selected.", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
+            logger.add2log("No file selected.");
+            return null;
         }
 
         public bool Save2PDF(string sPDF_Filename)
@@ -143,40 +199,73 @@ namespace S2Xcon
             return pDF;
         }
 
+        /// <summary>
+        /// add xml for noReboot
+        /// </summary>
+        /// <returns></returns>
+		private string PageData()
+		{
+            Logger.logger.add2log("CreateBarcodes::PageData()");
+			if (!this.IsNoReboot || Common.UsingJson)
+			{
+                Logger.logger.add2log("CreateBarcodes::PageData() return null");
+				return string.Empty;
+			}
+            Logger.logger.add2log("CreateBarcodes::PageData() return '" + "<Subsystem Name=\"SS_Client\"><Group Name=\"Download\"><Field Name=\"ProcessNow\">True</Field></Group></Subsystem>"+"'");
+			return "<Subsystem Name=\"SS_Client\"><Group Name=\"Download\"><Field Name=\"ProcessNow\">True</Field></Group></Subsystem>";
+		}
+
         public S2X.S2X Update()
         {
-            S2X.S2X s2xPages;
+            Logger.logger.add2log("CreateBarcodes::Update()");
+            S2X.S2X s2x;
             try
             {
-                string str = "";
-                string inputData = this.InputData;//the xml to convert
-                if (!string.IsNullOrEmpty(str))
+                string text = this.PageData();
+                string text2 = this.InputData;
+                if (!string.IsNullOrEmpty(text) && !Common.UsingJson)
                 {
-                    XDocument xDocument = XDocument.Parse(inputData);
-                    XDocument xDocument1 = XDocument.Parse(str);
+                    XDocument xDocument = XDocument.Parse(text2);
+                    XDocument xDocument1 = XDocument.Parse(text);
                     xDocument.Root.Add(xDocument1.Root);
-                    inputData = xDocument.ToString();
+                    text2 = xDocument.ToString();
                 }
                 this.VersionNumber = this.VersionNum();
                 logger.add2log("S2X: version=" + this.VersionNumber.ToString());
 
                 string[] names = Enum.GetNames(typeof(Symbol));
+                names = new string[] { Symbol.PDF417.ToString() };  //only interested in PDF417
                 for (int i = 0; i < (int)names.Length; i++)
                 {
                     string str1 = names[i];
-                    s2xPages = (!this.barcodeResult.ContainsKey(str1) ? new S2X.S2X() : this.barcodeResult[str1] as S2X.S2X);
+                    s2x = (!this.barcodeResult.ContainsKey(str1) ? new S2X.S2X() : this.barcodeResult[str1] as S2X.S2X);
                     
-                    s2xPages.IsNoReboot = this.IsNoReboot;
-                    s2xPages.IsNoStartBarcode = this.IsNoStartBarcode;
+                    s2x.IsNoReboot = this.IsNoReboot;
+                    s2x.IsNoStartBarcode = this.IsNoStartBarcode;
                     logger.add2log("S2X: IsNoReboot=" + this.IsNoReboot.ToString()+
                         ", IsNoStartBarcode="+this.IsNoStartBarcode.ToString());
 
                     Symbol symbol = (Symbol)Enum.Parse(typeof(Symbol), str1);
 
-                    s2xPages.PrintPages(this.Instruction, this.Password, inputData, symbol, this.VersionNumber);
-                    
-                    this.barcodeResult[str1] = s2xPages;
-                    string str2 = string.Format("Estimated barcodes {0}", s2xPages.EstimatedBarcodes);
+                    s2x.SetSourceName(Common.GetFullFooterAddition());
+                    s2x.PrintPages(this.Instruction, this.Password, text2, symbol, this.VersionNumber);
+
+                    if (symbol == Symbol.PDF417)
+                    {
+                        Logger.logger.add2log(string.Format(
+                            "data={0}\r\n instructions={1}\r\n pass={2}\r\n version={3}\r\nCommon.UsingJson={4}\r\nSetSourceName={5}\r\nIsNoReboot={6}\r\nIsNoStartBarcode={7}",
+                            text2,
+                            this.Instruction,
+                            this.Password,
+                            this.VersionNumber,
+                            Common.UsingJson,
+                            Common.GetFullFooterAddition(),
+                            s2x.IsNoReboot,
+                            s2x.IsNoStartBarcode));
+                    }
+
+                    this.barcodeResult[str1] = s2x;
+                    string str2 = string.Format("Estimated barcodes {0}", s2x.EstimatedBarcodes);
                     if (symbol == Symbol.PDF417)
                     {
                         this.EstimatedPDF417 = str2;
@@ -188,7 +277,7 @@ namespace S2Xcon
                 }
                 logger.add2log("PDF will be " + EstimatedPDF417 + " pages");
                 logger.add2log("writing temp file");
-                System.IO.File.WriteAllText(System.IO.Path.GetTempFileName(), inputData);
+                System.IO.File.WriteAllText(System.IO.Path.GetTempFileName(), text2);
                 string name = Enum.GetName(typeof(Symbol), this._BarcodeType);
                 logger.add2log("getting PDF417");
                 S2X.S2X item = this.barcodeResult[name] as S2X.S2X;
@@ -217,7 +306,10 @@ namespace S2Xcon
             {
                 return 1;
             }
-            return 3;
+            if (Common.UsingJson)
+                return 4;
+            else
+                return 3;
         }
     }
 }

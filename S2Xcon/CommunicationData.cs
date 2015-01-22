@@ -10,6 +10,8 @@ using System.Xml.Xsl;
 using S2Xcon.Properties;
 using System.Reflection;
 
+using Logger;
+
 namespace S2Xcon
 {
     class CommunicationData

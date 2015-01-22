@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\S2XConsoleReferences\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="S2X, Version=4.70.0.175, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\S2XConsoleReferences\S2X.dll</HintPath>
@@ -71,6 +74,7 @@
     </Content>
     <Content Include="readme.txt" />
     <EmbeddedResource Include="translatesettingsforstc.xsl" />
+    <Content Include="theory.txt" />
     <Content Include="zlib1.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

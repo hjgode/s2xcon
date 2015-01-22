@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace S2Xcon
+namespace Logger
 {
     public class logger
     {
