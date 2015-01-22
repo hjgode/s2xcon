@@ -62,7 +62,7 @@ namespace S2Xcon
                 }
                 catch (Exception)
                 {
-                    logger.add2log("excpetion in parsing JSON ");
+                    Logger.logger.add2log("excpetion in parsing JSON ");
                 }
 
                 //foreach (System.Windows.Controls.UserControl current2 in this.PageList)
@@ -86,7 +86,7 @@ namespace S2Xcon
                 //}
                 if (list.Count == 0)
                 {
-                    logger.add2log("  No data supplied.");
+                    Logger.logger.add2log("  No data supplied.");
                     return string.Empty;
                 }
                 text = MainViewModel.processJsonStrings(list);

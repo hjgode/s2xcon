@@ -37,6 +37,12 @@ namespace S2Xcon
         {
             int iReturn = 0;
 
+            Console.WriteLine("barcode_type: {0}", options.barcode_type);
+            if (options.barcode_type == null)
+            {
+                options.barcode_type = "COMM";
+                logger.add2log("set default barcode type=COMM");
+            }
             Console.WriteLine("input file: {0} ...", options.InputFile);
             Console.WriteLine("  output file: {0}", options.OutputFile);
             Console.WriteLine("  log file: {0}", options.logfile);
@@ -44,7 +50,12 @@ namespace S2Xcon
             Console.WriteLine("  password: {0}", options.password);
             Console.WriteLine("  nostartcode: {0}", options.nostartcode);
             Console.WriteLine("  noreboot: {0}", options.noreboot);
+
+            Console.WriteLine("  xml download URL: {0}", options.xmlDownloadURL);
+            Console.WriteLine("  xml download set: {0}", options.andDownloadURL);
+
             Console.WriteLine();
+
 
             if (options.InputFile!=null)
             {
@@ -68,6 +79,9 @@ namespace S2Xcon
                     logger.add2log("\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + 
                         " +++ S2Xcon started with");
                     logger.add2log(String.Format(
+                        "barcode type: {7}\r\n"+
+                        "  xml download URL: {8}\r\n"+
+                        "  xml download set: {9}\r\n" +
                         "input file: {0} ...\r\n" +
                         "  output file: {1}\r\n" +
                         "  log file: {2}\r\n" +
@@ -81,7 +95,10 @@ namespace S2Xcon
                         options.message,
                         options.password,
                         options.nostartcode,
-                        options.noreboot));
+                        options.noreboot,
+                        options.barcode_type,
+                        options.xmlDownloadURL,
+                        options.andDownloadURL));
 
                     // # filtering communication data only does only work within S2Xconsole of an installed SmartSystems server
                     //CreateBarcodes cBarcode = new CreateBarcodes(sFilename, false);
@@ -129,7 +146,21 @@ namespace S2Xcon
 
     class Options
     {
-        [Option('i', "input", MetaValue = "FILE", Required = true, HelpText = "Input file with data to process. No default.")]
+        public enum BarcodeType
+        {
+            COMM,
+            DOWNXML,
+            DOWNAND
+        }
+        BarcodeType barcodeType = BarcodeType.COMM;
+
+        [Option('t', "type", MetaValue = "STRING", HelpText = "type of barcode (COMM|DOWNXML|DOWNAND). Default=COMM. \r\n"+
+            "\tCOMM is for use with a communications input file (XML or JSON format)\r\n"
+            + "\tDOWNXML is to define a xml download URL, see --xmldown\r\n"
+            + "\tDOWNAND is to define a set of downloads for Android, see --anddown\r\n")]
+        public string barcode_type {get; set;}
+
+        [Option('i', "input", MetaValue = "FILE", HelpText = "Input file with data to process. No default.")]
         public string InputFile { get; set; }
 
         [Option('o', "output", MetaValue = "FILE", HelpText = "Output FILE with processed data (default: name of input as .pdf).")]
@@ -144,11 +175,17 @@ namespace S2Xcon
         [Option('l', "logfile", MetaValue = "STRING", HelpText = "log file name. default: name of input as .log")]
         public string logfile { get; set; }
 
-        [Option('n', "nostartcode", HelpText = "no start barcode. default: print start barcode")]
+        [Option('n', "nostartcode", HelpText = "no start barcode. default: print start barcode\r\n\tobsolete for JSON input files as these do never have a start barcode")]
         public bool nostartcode { get; set; }
 
-        [Option('r', "rebootno", HelpText = "no reboot. default: device will reboot")]
+        [Option('r', "rebootno", HelpText = "no reboot. default: device will reboot\r\n\tobsolete for JSON input files as these do not reboot for comm settings barcodes")]
         public bool noreboot { get; set; }
+
+        [Option('x', "xmldown", MetaValue = "STRING", HelpText = "use with -t DOWNXML. xml URL download location, ie ftp://199.64.70.66/loadurl/scanngo.xml")]
+        public string xmlDownloadURL { get; set; }
+
+        [Option('a', "anddown", MetaValue = "STRING", HelpText = "Android download set, ie 'software location^local text file^text file destination^update location^text file URL^destination for text file URL', where the ^ is used to separate the entries.")]
+        public string andDownloadURL { get; set; }
 
         [ValueList(typeof(List<string>))]
         public IList<string> DefinitionFiles { get; set; }

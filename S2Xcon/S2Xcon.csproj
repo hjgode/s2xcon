@@ -61,8 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="CommunicationData.cs" />
     <Compile Include="CreateBarcodes.cs" />
+    <Compile Include="DownloadOption.cs" />
     <Compile Include="logger.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Program.cs" />

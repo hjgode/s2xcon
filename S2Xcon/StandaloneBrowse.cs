@@ -45,7 +45,7 @@ namespace S2Xcon
                             if (!Common.IsJsonActionValid(text))
                             {
                                 //int num = (int)MessageBox.Show("This JSON file is not valid for bar code generation since the action value is not \"set\"", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
-                                logger.add2log("This JSON file is not valid for bar code generation since the action value is not \"set\"");
+                                Logger.logger.add2log("This JSON file is not valid for bar code generation since the action value is not \"set\"");
                                 return (string)null;
                             }
                             Common.UsingJson = true;
@@ -54,7 +54,7 @@ namespace S2Xcon
                         else
                         {
                             //is XML
-                            logger.add2log(" processing as xml file");
+                            Logger.logger.add2log(" processing as xml file");
                             Common.UsingJson = false;
                             str2 = Common.PrepareXmlContent(text);
                         }
@@ -64,21 +64,21 @@ namespace S2Xcon
                         return result;
                     }
                     //int num1 = (int)MessageBox.Show("The file is not a valid JSON or XML file.", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
-                    logger.add2log("The file is not a valid JSON or XML file.");
+                    Logger.logger.add2log("The file is not a valid JSON or XML file.");
                     result = null;
                     return result;
                 }
                 catch (Exception ex)
                 {
                     //int num = (int)MessageBox.Show("The file could not be read.", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
-                    logger.add2log("The file could not be read.");
+                    Logger.logger.add2log("The file could not be read.");
                     return (string)null;
                 }
             }
             else
             {
                 //int num = (int)MessageBox.Show("No file selected.", Settings.Default.AppDisplayName, MessageBoxButton.OK, MessageBoxImage.Hand);
-                logger.add2log("No file selected.");
+                Logger.logger.add2log("No file selected.");
                 return (string)null;
             }
         }
