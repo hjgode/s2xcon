@@ -50,7 +50,7 @@ run
 				DOWNXML is to define a xml download URL, see --xmldown
 				DOWNAND is to define a set of downloads for Android, see --anddown
 
-		-i FILE, --input=FILE           Required. Input file with data to process. No
+		-i FILE, --input=FILE           Input file with data to process. No
 										default.
 
 		-o FILE, --output=FILE          Output FILE with processed data (default:
@@ -72,8 +72,9 @@ run
 		-x, --xmldown					use with -t DOWNXML. xml URL download location, ie ftp://199.64.70.66/loadurl/scanngo.xml
 
 		-a, --anddown					Android download set, ie 
-										software location^local text file^text file destination^update location^text file URL^destination for text file URL
-										where the ^ is used to separate the entries.
+										SelectedURL^SelectedFolder^TextFile^TextFileDestination^SelectedOta^TextFileFromUrlDestination
+										(7 strings separated by the ^ symbol)
+										the ^ is used to separate the entries.
 
 		--help                          Display this help screen.
 
@@ -93,6 +94,22 @@ run
 		s2xcon -i e:\myExample-Support.json.config  -m "wlan support" -o e:\json_comm.pdf -n -r -t COMM
 			creates 'e:\json_comm.pdf'. Log msg will be appended to 'Default.log' in program dir
 			-n and -r are obsolete for JSON inpit files!
+
+		s2xcon -x ftp://199.64.70.66/loadurl/scanngo.xml  -m "xml down test" -o e:\xml_down.pdf -n -r -t DOWNXML
+			create e:\xml_down.pdf with xml download url, no start barcode and reboot, logs to default log in prog dir
+
+		s2xcon -t DOWNXML -x ftp://199.64.70.66/loadurl/scanngo.xml  -m "xml down test" -o e:\xml_down.pdf -n -r -l "E:\xml_down.log.txt"
+			create e:\xml_down.pdf with xml download url, no start barcode and reboot, logs to E:\xml_down.log.txt
+
+		s2xcon -t DOWNAND -m "android down test" -o e:\and_down.pdf -l "E:\xml_down.log.txt" -a SelectedURL^SelectedFolder^TextFile^TextFileDestination^SelectedOta^SelectedTextFileFromUrl^TextFileFromUrlDestination
+			create a barcode with all the Android options
+			log to E:\xml_down.log.txt
+
+		s2xcon -t DOWNAND -m "android down test" -o e:\and_down.pdf -l "E:\xml_down.log.txt" -a SelectedURL^SelectedFolder^^^SelectedOta^SelectedTextFileFromUrl^TextFileFromUrlDestination
+			create a barcode with all the Android options except a TextFile (a JSON file to include) and the destination for the text file
+			log to E:\xml_down.log.txt
+		
+		-t DOWNAND -m "android down test" -o e:\and_down.pdf -l "E:\xml_down.log.txt" -a LoadSoftwareFromURL^D:\svn\git\s2xconsole\sample\textfile.txt.txt^TextFileDestination^LoadUpdateFromURL^LoadTextFileFromURL^DestinationForTextFileFromURL/test
 
 return codes
 	s2xcon returns exit code 0 if no error. Exit codes can be used in batch files to verify the result.

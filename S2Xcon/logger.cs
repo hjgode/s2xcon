@@ -8,7 +8,7 @@ namespace Logger
     public class logger
     {
         static string _LogPath = "";
-        static string LogPath
+        public static string LogPath
         {
             get
             {
@@ -38,7 +38,16 @@ namespace Logger
         }
         public static void setLogName(string s)
         {
-            _LogFile = s;
+            if (System.IO.Path.GetFileName(s) != s)
+            {
+                //split path
+                string sPath = System.IO.Path.GetDirectoryName(s);
+                logger.setLogPath(sPath);
+                string sNameOnly = System.IO.Path.GetFileName(s);
+                _LogFile = sNameOnly;
+            }
+            else
+                _LogFile = s;
         }
         public static void add2log(string s)
         {

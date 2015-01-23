@@ -20,15 +20,21 @@ can process xml and JSON
 			Text File 	
 				The location of the text file you want to copy.
 			Text File Destination 	
-				A path that is relative to the Android external storage directory. If this field is left blank, the text file is copied to the default location: the standard download directory on the Intermec computer. Use this optional field to specify a location in the download directory. For example, to copy the file to a subfolder named "temp," type temp. The destination folder must exist on the mobile computer before you can download the text file.
+				A path that is relative to the Android external storage directory. If this field is left blank, the text file is copied to 
+				the default location: the standard download directory on the Intermec computer. Use this optional field to specify a 
+				location in the download directory. For example, to copy the file to a subfolder named "temp," type temp. The destination 
+				folder must exist on the mobile computer before you can download the text file.
 			
 			Load Update from URL 	
 				The web server address of the over the air (OTA) file to update the operating system.
 			
 			Load Text File from URL 	
-				The web server or FTP server address of the text file. The bar code only includes the URL of the text file and the destination on the Intermec computer. Use this option for large text files.
+				The web server or FTP server address of the text file. The bar code only includes the URL of the text file and 
+				the destination on the Intermec computer. Use this option for large text files.
 			Destination for Text File from URL 	
-				The filename of the text file to download. This field may also include a path that is relative to the Android external storage directory. For example, to copy the file to a subfolder named "temp," type temp/myfile.txt. The destination folder must exist on the mobile computer before you can download the text file.
+				The filename of the text file to download. This field may also include a path that is relative to the Android external storage 
+				directory. For example, to copy the file to a subfolder named "temp," type temp/myfile.txt. The destination folder must 
+				exist on the mobile computer before you can download the text file.
 
 	password and notes are added separately
 

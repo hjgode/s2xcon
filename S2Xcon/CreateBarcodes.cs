@@ -57,7 +57,18 @@ namespace S2Xcon
             InputData = GetBarCodeData(sFileName);
         }
 
-        bool UsingJson = false;
+        public CreateBarcodes(bool bNostart, bool bNoReboot, string inputData, string sMessage, string sPassword)
+        {
+            this.InputData = inputData;
+            this.IsNoReboot = bNoReboot;
+            this.IsNoStartBarcode = bNostart;
+            if (sMessage != null)
+                this.Instruction = sMessage;
+            if (sPassword != null)
+                this.Password = sPassword;
+            this.InputData = inputData;
+        }
+
 
         public string GetBarCodeData(string sFileName)
         {

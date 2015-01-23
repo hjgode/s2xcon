@@ -1,0 +1,88 @@
+23.01.2015 16:17 +++ S2Xcon started with: 
+--------------------------
+args line: -t DOWNAND -m android down test -o e:\and_down.pdf -l E:\xml_down.log.txt -a LoadSoftwareFromURL^D:\svn\git\s2xconsole\sample\textfile.txt.txt^TextFileDestination^LoadUpdateFromURL^LoadTextFileFromURL^DestinationForTextFileFromURL/test 
+--------------------------
+barcode type: DOWNAND
+  XML download URL: 
+  ANDroid download set: LoadSoftwareFromURL^D:\svn\git\s2xconsole\sample\textfile.txt.txt^TextFileDestination^LoadUpdateFromURL^LoadTextFileFromURL^DestinationForTextFileFromURL/test
+input file:  ...
+  output file: e:\and_down.pdf
+  log file: E:\xml_down.log.txt
+  message: android down test
+  password: 
+  nostartcode: False
+  noreboot: False
+TestStringWithinJson() in=textfile sample
+DownloadOption::getPageData()
+LoadSettingViewModel::PageData() return={
+  "v": 1.0,
+  "r": [
+    "LoadSoftwareFromURL"
+  ],
+  "w": {
+    "TextFileDestination/textfile.txt.txt": "textfile sample"
+  },
+  "o": "LoadUpdateFromURL",
+  "c": [
+    {
+      "s": "LoadTextFileFromURL",
+      "d": "DestinationForTextFileFromURL/test"
+    }
+  ]
+}
+IsJsonString() in={
+  "v": 1.0,
+  "r": [
+    "LoadSoftwareFromURL"
+  ],
+  "w": {
+    "TextFileDestination/textfile.txt.txt": "textfile sample"
+  },
+  "o": "LoadUpdateFromURL",
+  "c": [
+    {
+      "s": "LoadTextFileFromURL",
+      "d": "DestinationForTextFileFromURL/test"
+    }
+  ]
+}
+IsJsonString() out=True
+TrimJsonWhitespace() in={
+  "v": 1.0,
+  "r": [
+    "LoadSoftwareFromURL"
+  ],
+  "w": {
+    "TextFileDestination/textfile.txt.txt": "textfile sample"
+  },
+  "o": "LoadUpdateFromURL",
+  "c": [
+    {
+      "s": "LoadTextFileFromURL",
+      "d": "DestinationForTextFileFromURL/test"
+    }
+  ]
+}
+TrimJsonWhitespace() out={"v":1.0,"r":["LoadSoftwareFromURL"],"w":{"TextFileDestination/textfile.txt.txt":"textfile sample"},"o":"LoadUpdateFromURL","c":[{"s":"LoadTextFileFromURL","d":"DestinationForTextFileFromURL/test"}]}
+existing file 'e:\and_down.pdf' deleted
+CreateBarcodes::Update()
+CreateBarcodes::PageData()
+CreateBarcodes::PageData() return null
+S2X: version=4
+S2X: IsNoReboot=False, IsNoStartBarcode=True
+data={"v":1.0,"r":["LoadSoftwareFromURL"],"w":{"TextFileDestination/textfile.txt.txt":"textfile sample"},"o":"LoadUpdateFromURL","c":[{"s":"LoadTextFileFromURL","d":"DestinationForTextFileFromURL/test"}]}
+ instructions=android down test
+ pass=
+ version=4
+Common.UsingJson=True
+SetSourceName=
+IsNoReboot=False
+IsNoStartBarcode=True
+PDF will be Estimated barcodes 1 pages
+writing temp file
+getting PDF417
+S2X PDF417 done
+PDF stream generated
+PDF created: 'e:\and_down.pdf'
+
+23.01.2015 16:18 +++ S2Xcon ended with 0 +++

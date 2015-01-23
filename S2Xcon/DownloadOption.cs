@@ -16,20 +16,32 @@ namespace S2Xcon
 {
     class DownloadOption
     {
+        /// <summary>
+        /// XML only: where to put the device in SmartSystems console
+        /// </summary>
         string SelectedFolder;
+        /// <summary>
+        /// XML: full download URL address, ie 
+        /// </summary>
         string SelectedURL;
 
         //json
         bool DestinationSpecified = false;
+        /// <summary>
+        /// JSON: 
+        /// </summary>
         string Destination = null;
 
         /// <summary>
-        /// The location of the text file you want to copy
+        /// The location of the local text file you want to copy
         /// </summary>
         string TextFile = null;
 
         /// <summary>
-        /// A path that is relative to the Android external storage directory. If this field is left blank, the text file is copied to the default location: the standard download directory on the Intermec computer. Use this optional field to specify a location in the download directory. For example, to copy the file to a subfolder named "temp," type temp. The destination folder must exist on the mobile computer before you can download the text file.
+        /// A path that is relative to the Android external storage directory. If this field is left blank, the text file is copied to the 
+        /// default location: the standard download directory on the Intermec computer. Use this optional field to specify a location in 
+        /// the download directory. For example, to copy the file to a subfolder named "temp," type temp. The destination folder must exist 
+        /// on the mobile computer before you can download the text file.
         /// </summary>
         string TextFileDestination = null;
 
@@ -39,12 +51,15 @@ namespace S2Xcon
         string SelectedOta = null;
 
         /// <summary>
-        /// The web server or FTP server address of the text file. The bar code only includes the URL of the text file and the destination on the Intermec computer. Use this option for large text files.
+        /// The web server or FTP server address of the text file. The bar code only includes the URL of the text file and the destination 
+        /// on the Intermec computer. Use this option for large text files.
         /// </summary>
         string SelectedTextFileFromUrl = null;
 
         /// <summary>
-        /// The filename of the text file to download. This field may also include a path that is relative to the Android external storage directory. For example, to copy the file to a subfolder named "temp," type temp/myfile.txt. The destination folder must exist on the mobile computer before you can download the text file.
+        /// The filename of the text file to download. This field may also include a path that is relative to the Android external storage 
+        /// directory. For example, to copy the file to a subfolder named "temp," type temp/myfile.txt. The destination folder must exist 
+        /// on the mobile computer before you can download the text file.
         /// </summary>
         string TextFileFromUrlDestination = null;
 
@@ -57,6 +72,23 @@ namespace S2Xcon
         {
             this.SelectedFolder = selectedFolder;
             this.SelectedURL = downloadURL;
+        }
+
+        public DownloadOption(string downloadURL)
+        {
+            this.SelectedFolder = null;
+            this.SelectedURL = downloadURL;
+        }
+
+        public DownloadOption(string[] jsonParms)
+        {
+            // LoadSoftwareFromURL^D:\svn\git\s2xconsole\sample\textfile.txt.txt^TextFileDestination^LoadUpdateFromURL^LoadTextFileFromURL^DestinationForTextFileFromURL/test
+            this.SelectedURL = jsonParms[0];
+            this.TextFile = jsonParms[1];
+            this.TextFileDestination = jsonParms[2];
+            this.SelectedOta = jsonParms[3];
+            this.SelectedTextFileFromUrl = jsonParms[4];
+            this.TextFileFromUrlDestination = jsonParms[5];
         }
 
         public string getBarcodeData()
