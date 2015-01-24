@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DevInfo Action="Set" Persist="true" SeqNo="247">
+ <Information>
+  <OSName>WM6</OSName>
+  <UniqueID>CK3A17610858208</UniqueID>
+  <IVAVersion>iva_5.04.70.2820</IVAVersion>
+ </Information>
+ <DataModels>
+  <File Path="itcreaderdatamodel.xml"/>
+  <File Path="itcreaderdatamodel_en.xml"/>
+  <File Path="itcreaderdatamodel_en.chm"/>
+  <File Path="itcreaderdatamodel.help.xml"/>
+  <File Path="scannerssymbologiesschema.xml"/>
+  <File Path="scannerssymbologiesschema_en.xml"/>
+  <File Path="scannerssymbologiesschema_en.chm"/>
+  <File Path="scannerssymbologiesschema.help.xml"/>
+  <File Path="rfidschema.xml"/>
+  <File Path="rfidschema_en.xml"/>
+  <File Path="rfidschema_en.chm"/>
+  <File Path="rfidschema.help.xml"/>
+  <File Path="communicationsschema.xml"/>
+  <File Path="communicationsschema_en.xml"/>
+  <File Path="communicationsschema_en.chm"/>
+  <File Path="communicationsschema.help.xml"/>
+  <File Path="devicesettingsdatamodel.xml"/>
+  <File Path="devicesettingsdatamodel_en.xml"/>
+  <File Path="devicesettingsdatamodel_en.chm"/>
+  <File Path="devicesettingsdatamodel.help.xml"/>
+  <File Path="pb42configschema.xml"/>
+  <File Path="pb42configschema_en.xml"/>
+  <File Path="pb42configschema_en.chm"/>
+  <File Path="pb42configschema.help.xml"/>
+  <File Path="printerconfigschema.xml"/>
+  <File Path="printerconfigschema_en.xml"/>
+  <File Path="printerconfigschema_en.chm"/>
+  <File Path="printerconfigschema.help.xml"/>
+  <File Path="licensemanagerschema.xml"/>
+  <File Path="licensemanagerschema_en.xml"/>
+  <File Path="licensemanagerschema_en.chm"/>
+  <File Path="licensemanagerschema.help.xml"/>
+  <File Path="ssdm.xml"/>
+  <File Path="ssdm_en.xml"/>
+  <File Path="ssdm_en.chm"/>
+  <File Path="ssdm.help.xml"/>
+  <File Path="iqueueschema.xml"/>
+  <File Path="iqueueschema_en.xml"/>
+  <File Path="iqueueschema_en.chm"/>
+  <File Path="iqueueschema.help.xml"/>
+  <File Path="smartsystem.xml"/>
+  <File Path="smartsystem_en.xml"/>
+  <File Path="smartsystem_en.chm"/>
+  <File Path="smartsystem.help.xml"/>
+  <File Path="internalscannerschema.xml"/>
+  <File Path="internalscannerschema_en.xml"/>
+  <File Path="internalscannerschema_en.chm"/>
+  <File Path="internalscannerschema.help.xml"/>
+  <File Path="wirelessscannerschema.xml"/>
+  <File Path="wirelessscannerschema_en.xml"/>
+  <File Path="wirelessscannerschema_en.chm"/>
+  <File Path="wirelessscannerschema.help.xml"/>
+  <File Path="tetheredscannerschema.xml"/>
+  <File Path="tetheredscannerschema_en.xml"/>
+  <File Path="tetheredscannerschema_en.chm"/>
+  <File Path="tetheredscannerschema.help.xml"/>
+  <File Path="docktetheredscannerschema.xml"/>
+  <File Path="docktetheredscannerschema_en.xml"/>
+  <File Path="docktetheredscannerschema_en.chm"/>
+  <File Path="docktetheredscannerschema.help.xml"/>
+  <File Path="bluetoothscannerschema.xml"/>
+  <File Path="bluetoothscannerschema_en.xml"/>
+  <File Path="bluetoothscannerschema_en.chm"/>
+  <File Path="bluetoothscannerschema.help.xml"/>
+  <File Path="usbscannerdatamodel.xml"/>
+  <File Path="usbscannerdatamodel_en.xml"/>
+  <File Path="vpnschemack30.xml"/>
+  <File Path="funksecuritydatamodel.xml"/>
+  <File Path="funksecuritydatamodel_en.xml"/>
+  <File Path="funksecuritydatamodel_en.chm"/>
+  <File Path="funksecuritydatamodel.help.xml"/>
+  <File Path="ssdmbatteryinfo.xml"/>
+  <File Path="ssdmbatteryinfo_en.xml"/>
+  <File Path="ssdmbatteryinfo_en.chm"/>
+  <File Path="ssdmbatteryinfo.help.xml"/>
+  <Pluggable Subsystem="PB42 Settings" RegPath="SOFTWARE\Intermec\ICCU\Pluggable_Subsystems\Printers" DataModel="PB42ConfigSchema.xml" Version="2.0"/>
+  <Pluggable Subsystem="Printer" RegPath="SOFTWARE\Intermec\ICCU\Pluggable_Subsystems\Printers" DataModel="PrinterConfigSchema.xml" Version="2.0"/>
+  <Pluggable Subsystem="LicenseManager" RegPath="SOFTWARE\Intermec\ICCU\Pluggable_Subsystems" DataModel="LicenseManagerSchema.xml" Version="1.0"/>
+  <Pluggable Subsystem="Device Monitor" RegPath="SOFTWARE\Intermec\ICCU\Pluggable_Subsystems" DataModel="SSDM.xml" Version="2.0"/>
+  <Pluggable Subsystem="IQueue" RegPath="SOFTWARE\Intermec\ICCU\Pluggable_Subsystems" DataModel="IQueueSchema.xml" Version="2.0"/>
+  <Pluggable Subsystem="SS_Client" RegPath="SOFTWARE\Intermec\ICCU\Pluggable_Subsystems" DataModel="SmartSystem.xml" Version="1.0"/>
+ </DataModels>
+ <Subsystem Name="Data Collection">
+  <Field Name="Scanner Push Pull">0</Field>
+  <Group Name="Scanners" Instance="0">
+   <Group Name="Symbologies">
+    <Group Name="Code 39">
+     <Field Name="Enable Code 39">1</Field>
+     <Group Name="Options">
+      <Field Name="Full ASCII Conversion">0</Field>
+      <Field Name="Start/Stop transmission">0</Field>
+      <Field Name="Start character">2</Field>
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Reading range">1</Field>
+      <Field Name="Reading tolerance">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">3</Field>
+      <Field Name="Length 2">3</Field>
+      <Field Name="Length 3">3</Field>
+      <Field Name="User defined symbology ID">B1</Field>
+     </Group>
+    </Group>
+    <Group Name="UPC/EAN">
+     <Field Name="Enable UPC A">1</Field>
+     <Field Name="Enable UPC E">1</Field>
+     <Field Name="Enable EAN 8">1</Field>
+     <Field Name="Enable EAN 13">1</Field>
+     <Field Name="Enable UPC-E1">0</Field>
+     <Field Name="Add-on digits">0</Field>
+     <Field Name="Add-on 2 digits active">0</Field>
+     <Field Name="Add-on 5 digits active">0</Field>
+     <Field Name="Add-on security">10</Field>
+     <Field Name="UPC A check digit">1</Field>
+     <Field Name="UPC E check digit">1</Field>
+     <Field Name="EAN 8 check digit">1</Field>
+     <Field Name="EAN 13 check digit">1</Field>
+     <Field Name="UPC A number sys">1</Field>
+     <Field Name="UPC E number sys">1</Field>
+     <Field Name="UPC A xmit as EAN 13">1</Field>
+     <Field Name="UPC E xmit as UPC A">0</Field>
+     <Field Name="EAN 8 xmit as EAN 13">0</Field>
+     <Field Name="ISBN conversion for EAN 13">0</Field>
+     <Field Name="ISMN conversion for EAN 13">0</Field>
+     <Field Name="ISSN conversion for EAN 13">0</Field>
+     <Field Name="GTIN compliant">0</Field>
+     <Field Name="UPC A user defined sym ID">A0</Field>
+     <Field Name="UPC E user defined sym ID">E0</Field>
+     <Field Name="EAN 8 user defined sym ID">FF</Field>
+     <Field Name="EAN 13 user defined sym ID">F</Field>
+    </Group>
+    <Group Name="Code 128">
+     <Field Name="Enable Code 128">1</Field>
+     <Field Name="EAN 128">1</Field>
+     <Field Name="ISBT 128">0</Field>
+     <Group Name="Options">
+      <Field Name="EAN 128 identifier">1</Field>
+      <Field Name="ISBT concatenation xmit">0</Field>
+      <Field Name="Concatenate ISBT codes">0</Field>
+      <Field Name="Check digit verify">0</Field>
+      <Field Name="Reading tolerance">0</Field>
+      <Field Name="GTIN compliant">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">1</Field>
+      <Field Name="Length 2">1</Field>
+      <Field Name="Length 3">1</Field>
+      <Field Name="Code 128 User def sym ID">B3</Field>
+      <Field Name="EAN 128 User def sym ID">C9</Field>
+      <Field Name="FNC1 conversion">\x1D</Field>
+     </Group>
+    </Group>
+    <Group Name="Interleaved 2 of 5">
+     <Field Name="Enable I 2 of 5">0</Field>
+     <Group Name="Options">
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Reading tolerance">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B2</Field>
+     </Group>
+    </Group>
+    <Group Name="Code 93">
+     <Field Name="Enable Code 93">0</Field>
+     <Group Name="Options">
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">1</Field>
+      <Field Name="Length 2">1</Field>
+      <Field Name="Length 3">1</Field>
+      <Field Name="User defined symbology ID">B6</Field>
+     </Group>
+    </Group>
+    <Group Name="Codabar">
+     <Field Name="Enable Codabar">0</Field>
+     <Group Name="Options">
+      <Field Name="Start/Stop transmit">0</Field>
+      <Field Name="CLSI library system">0</Field>
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Concatenation">0</Field>
+      <Field Name="Concatenation mode">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B7</Field>
+     </Group>
+    </Group>
+    <Group Name="Code 2 of 5">
+     <Field Name="Enable Code 2 of 5">0</Field>
+     <Group Name="Options">
+      <Field Name="Format">0</Field>
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B5</Field>
+     </Group>
+    </Group>
+    <Group Name="MSI">
+     <Field Name="Enable MSI">0</Field>
+     <Group Name="Options">
+      <Field Name="Verify check digit">1</Field>
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B8</Field>
+     </Group>
+    </Group>
+    <Group Name="Plessey">
+     <Field Name="Enable Plessey">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">5</Field>
+      <Field Name="Length 2">5</Field>
+      <Field Name="Length 3">5</Field>
+      <Field Name="User defined symbology ID">C2</Field>
+     </Group>
+    </Group>
+    <Group Name="Code 11">
+     <Field Name="Enable Code 11">0</Field>
+     <Group Name="Options">
+      <Field Name="Verify check digit">1</Field>
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">2</Field>
+      <Field Name="Length 2">2</Field>
+      <Field Name="Length 3">2</Field>
+      <Field Name="User defined symbology ID">C1</Field>
+     </Group>
+    </Group>
+    <Group Name="Matrix 2 of 5">
+     <Field Name="Enable Matrix 2 of 5">0</Field>
+     <Group Name="Options">
+      <Field Name="Start/Stop">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B4</Field>
+     </Group>
+    </Group>
+    <Group Name="Telepen">
+     <Field Name="Enable Telepen">0</Field>
+     <Group Name="Options">
+      <Field Name="Format">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">1</Field>
+      <Field Name="Length 2">1</Field>
+      <Field Name="Length 3">1</Field>
+      <Field Name="User defined symbology ID">C6</Field>
+     </Group>
+    </Group>
+    <Group Name="PDF417">
+     <Field Name="Enable PDF417">1</Field>
+     <Group Name="Options">
+      <Field Name="Irregular PDF">0</Field>
+      <Field Name="User defined symbology ID">C7</Field>
+      <Group Name="Macro PDF417">
+       <Field Name="Control header transmission">0</Field>
+       <Field Name="Optional fields file name xmit">0</Field>
+       <Field Name="Segment count transmitted">0</Field>
+       <Field Name="Time stamp transmitted">0</Field>
+       <Field Name="Sender transmitted">0</Field>
+       <Field Name="Addressee transmitted">0</Field>
+       <Field Name="File size transmitted">0</Field>
+       <Field Name="Checksum transmitted">0</Field>
+      </Group>
+     </Group>
+    </Group>
+    <Group Name="Micro PDF417">
+     <Field Name="Enable Micro PDF417">0</Field>
+     <Group Name="Options">
+      <Field Name="MicroPDF Code 128 emulation">0</Field>
+      <Field Name="User defined symbology ID">C8</Field>
+     </Group>
+    </Group>
+    <Group Name="Maxicode">
+     <Field Name="Enable Maxicode">0</Field>
+     <Group Name="Options">
+      <Field Name="Mode 0">0</Field>
+      <Field Name="User defined symbology ID">D2</Field>
+     </Group>
+    </Group>
+    <Group Name="DataMatrix">
+     <Field Name="Enable DataMatrix">1</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">D0</Field>
+     </Group>
+    </Group>
+    <Group Name="QR Code">
+     <Field Name="Enable QR Code">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">D1</Field>
+     </Group>
+    </Group>
+    <Group Name="RSS 14">
+     <Field Name="Enable RSS 14">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C3</Field>
+     </Group>
+    </Group>
+    <Group Name="RSS Limited">
+     <Field Name="Enable RSS Limited">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C4</Field>
+     </Group>
+    </Group>
+    <Group Name="RSS Expanded">
+     <Field Name="Enable RSS Expanded">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C5</Field>
+     </Group>
+    </Group>
+    <Group Name="Codablock A">
+     <Field Name="Enable Codablock A">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">K0</Field>
+     </Group>
+    </Group>
+    <Group Name="Codablock F">
+     <Field Name="Enable Codablock F">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">K1</Field>
+     </Group>
+    </Group>
+    <Group Name="EAN.UCC Composite">
+     <Field Name="Enable EAN.UCC Composite A/B">0</Field>
+     <Field Name="Enable EAN.UCC Composite C">0</Field>
+     <Field Name="Linear only xmit mode">0</Field>
+     <Field Name="UPC/EAN comp msg decode">2</Field>
+     <Field Name="A/B User defined symbology ID">G0</Field>
+     <Field Name="C User defined symbology ID">G1</Field>
+    </Group>
+    <Group Name="Postnet">
+     <Field Name="Enable Postnet">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P0</Field>
+     </Group>
+    </Group>
+    <Group Name="Planet">
+     <Field Name="Enable Planet">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P1</Field>
+     </Group>
+    </Group>
+    <Group Name="BPO">
+     <Field Name="Enable BPO">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P2</Field>
+     </Group>
+    </Group>
+    <Group Name="CanadaPost">
+     <Field Name="Enable CanadaPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">P6</Field>
+     </Group>
+    </Group>
+    <Group Name="AustraliaPost">
+     <Field Name="Enable AustraliaPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">P3</Field>
+     </Group>
+    </Group>
+    <Group Name="JapanPost">
+     <Field Name="Enable JapanPost">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P5</Field>
+     </Group>
+    </Group>
+    <Group Name="DutchPost">
+     <Field Name="Enable DutchPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">P4</Field>
+     </Group>
+    </Group>
+    <Group Name="Aztec">
+     <Field Name="Enable Aztec">0</Field>
+     <Group Name="Options">
+      <Field Name="Structured Append Mode">0</Field>
+      <Field Name="Runes">0</Field>
+      <Field Name="EAN128 Emulation">0</Field>
+      <Field Name="User defined symbology ID">D3</Field>
+     </Group>
+    </Group>
+    <Group Name="TLC 39">
+     <Field Name="Enable TLC 39">0</Field>
+     <Group Name="Options">
+      <Field Name="Linear only xmit mode">0</Field>
+      <Field Name="ECI Security">10</Field>
+      <Field Name="User defined symbology ID">H0</Field>
+     </Group>
+    </Group>
+   </Group>
+   <Group Name="Symbology Options">
+    <Field Name="Preamble"/>
+    <Field Name="Postamble"/>
+    <Field Name="Global symbology ID">0</Field>
+   </Group>
+   <Group Name="Scanner Settings">
+    <Field Name="Hardware trigger">1</Field>
+    <Field Name="Turn off after good read">1</Field>
+   </Group>
+   <Group Name="Imager Settings">
+    <Field Name="1D Omni-directional">1</Field>
+    <Field Name="Lighting mode">0</Field>
+    <Field Name="Lighting goal">42</Field>
+    <Field Name="Illumination Level">100</Field>
+    <Field Name="1D Search Area">0</Field>
+    <Group Name="Signature Capture">
+     <Group Name="Scenario" Instance="0">
+      <Field Name="Enable Scenario">0</Field>
+      <Field Name="Bar Code Identifier">0</Field>
+      <Field Name="Focus Check">0</Field>
+      <Field Name="Image Ratio Check">0</Field>
+      <Field Name="Projective Mapping Resolution">0</Field>
+      <Field Name="Output Format">0</Field>
+      <Field Name="Output Compression">0</Field>
+      <Field Name="Quality Setting">50</Field>
+      <Field Name="Contrast Enhancement">0</Field>
+      <Field Name="Filtering">0</Field>
+      <Field Name="Edge Enhancement">0</Field>
+      <Field Name="Bar Code Length">0</Field>
+      <Field Name="Bar Code Mask"/>
+      <Field Name="Automatic Correction">3</Field>
+      <Field Name="Horizontal Offset">0</Field>
+      <Field Name="Vertical Offset">0</Field>
+      <Field Name="Area Width">0</Field>
+      <Field Name="Area Height">0</Field>
+      <Field Name="Bar Code Width">0</Field>
+      <Field Name="Bar Code Height">0</Field>
+     </Group>
+     <Group Name="Scenario" Instance="1">
+      <Field Name="Enable Scenario">0</Field>
+      <Field Name="Bar Code Identifier">0</Field>
+      <Field Name="Focus Check">0</Field>
+      <Field Name="Image Ratio Check">0</Field>
+      <Field Name="Projective Mapping Resolution">0</Field>
+      <Field Name="Output Format">0</Field>
+      <Field Name="Output Compression">0</Field>
+      <Field Name="Quality Setting">50</Field>
+      <Field Name="Contrast Enhancement">0</Field>
+      <Field Name="Filtering">0</Field>
+      <Field Name="Edge Enhancement">0</Field>
+      <Field Name="Bar Code Length">0</Field>
+      <Field Name="Bar Code Mask"/>
+      <Field Name="Automatic Correction">3</Field>
+      <Field Name="Horizontal Offset">0</Field>
+      <Field Name="Vertical Offset">0</Field>
+      <Field Name="Area Width">0</Field>
+      <Field Name="Area Height">0</Field>
+      <Field Name="Bar Code Width">0</Field>
+      <Field Name="Bar Code Height">0</Field>
+     </Group>
+     <Group Name="Scenario" Instance="2">
+      <Field Name="Enable Scenario">0</Field>
+      <Field Name="Bar Code Identifier">0</Field>
+      <Field Name="Focus Check">0</Field>
+      <Field Name="Image Ratio Check">0</Field>
+      <Field Name="Projective Mapping Resolution">0</Field>
+      <Field Name="Output Format">0</Field>
+      <Field Name="Output Compression">0</Field>
+      <Field Name="Quality Setting">50</Field>
+      <Field Name="Contrast Enhancement">0</Field>
+      <Field Name="Filtering">0</Field>
+      <Field Name="Edge Enhancement">0</Field>
+      <Field Name="Bar Code Length">0</Field>
+      <Field Name="Bar Code Mask"/>
+      <Field Name="Automatic Correction">3</Field>
+      <Field Name="Horizontal Offset">0</Field>
+      <Field Name="Vertical Offset">0</Field>
+      <Field Name="Area Width">0</Field>
+      <Field Name="Area Height">0</Field>
+      <Field Name="Bar Code Width">0</Field>
+      <Field Name="Bar Code Height">0</Field>
+     </Group>
+     <Group Name="Scenario" Instance="3">
+      <Field Name="Enable Scenario">0</Field>
+      <Field Name="Bar Code Identifier">0</Field>
+      <Field Name="Focus Check">0</Field>
+      <Field Name="Image Ratio Check">0</Field>
+      <Field Name="Projective Mapping Resolution">0</Field>
+      <Field Name="Output Format">0</Field>
+      <Field Name="Output Compression">0</Field>
+      <Field Name="Quality Setting">50</Field>
+      <Field Name="Contrast Enhancement">0</Field>
+      <Field Name="Filtering">0</Field>
+      <Field Name="Edge Enhancement">0</Field>
+      <Field Name="Bar Code Length">0</Field>
+      <Field Name="Bar Code Mask"/>
+      <Field Name="Automatic Correction">3</Field>
+      <Field Name="Horizontal Offset">0</Field>
+      <Field Name="Vertical Offset">0</Field>
+      <Field Name="Area Width">0</Field>
+      <Field Name="Area Height">0</Field>
+      <Field Name="Bar Code Width">0</Field>
+      <Field Name="Bar Code Height">0</Field>
+     </Group>
+    </Group>
+   </Group>
+   <Group Name="Decode Security">
+    <Field Name="Consecutive data validation">0</Field>
+    <Field Name="Identical consecutive timeout">300</Field>
+    <Field Name="Diff consecutive timeout">0</Field>
+    <Field Name="Center Decoding">0</Field>
+    <Field Name="Center Decoding Tolerance">0</Field>
+   </Group>
+  </Group>
+  <Group Name="Scanners" Instance="3">
+   <Field Name="Enable scanner port">0</Field>
+   <Field Name="Enable scanner auto-detect">1</Field>
+   <Group Name="Symbologies">
+    <Group Name="Code 39">
+     <Field Name="Enable Code 39">1</Field>
+     <Group Name="Options">
+      <Field Name="Full ASCII Conversion">0</Field>
+      <Field Name="Start/Stop transmission">0</Field>
+      <Field Name="Start character">2</Field>
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Reading range">1</Field>
+      <Field Name="Reading tolerance">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">3</Field>
+      <Field Name="Length 2">3</Field>
+      <Field Name="Length 3">3</Field>
+      <Field Name="User defined symbology ID">B1</Field>
+     </Group>
+    </Group>
+    <Group Name="UPC/EAN">
+     <Field Name="Enable UPC A">1</Field>
+     <Field Name="Enable UPC E">1</Field>
+     <Field Name="Enable EAN 8">1</Field>
+     <Field Name="Enable EAN 13">1</Field>
+     <Field Name="Enable UPC-E1">0</Field>
+     <Field Name="Add-on digits">0</Field>
+     <Field Name="Add-on 2 digits active">0</Field>
+     <Field Name="Add-on 5 digits active">0</Field>
+     <Field Name="UPC A check digit">1</Field>
+     <Field Name="UPC E check digit">1</Field>
+     <Field Name="EAN 8 check digit">1</Field>
+     <Field Name="EAN 13 check digit">1</Field>
+     <Field Name="UPC A number sys">1</Field>
+     <Field Name="UPC E number sys">1</Field>
+     <Field Name="UPC A xmit as EAN 13">1</Field>
+     <Field Name="UPC E xmit as UPC A">0</Field>
+     <Field Name="EAN 8 xmit as EAN 13">0</Field>
+     <Field Name="ISBN conversion for EAN 13">0</Field>
+     <Field Name="UPC A user defined sym ID">A0</Field>
+     <Field Name="UPC E user defined sym ID">E0</Field>
+     <Field Name="EAN 8 user defined sym ID">FF</Field>
+     <Field Name="EAN 13 user defined sym ID">F</Field>
+    </Group>
+    <Group Name="Code 128">
+     <Field Name="Enable Code 128">1</Field>
+     <Field Name="EAN 128">1</Field>
+     <Field Name="ISBT 128">0</Field>
+     <Group Name="Options">
+      <Field Name="EAN 128 identifier">1</Field>
+      <Field Name="ISBT concatenation xmit">0</Field>
+      <Field Name="Concatenate ISBT codes">0</Field>
+      <Field Name="Check digit verify">0</Field>
+      <Field Name="Reading tolerance">0</Field>
+      <Field Name="GTIN compliant">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">1</Field>
+      <Field Name="Length 2">1</Field>
+      <Field Name="Length 3">1</Field>
+      <Field Name="Code 128 User def sym ID">B3</Field>
+      <Field Name="EAN 128 User def sym ID">C9</Field>
+      <Field Name="FNC1 conversion">\x1D</Field>
+     </Group>
+    </Group>
+    <Group Name="Interleaved 2 of 5">
+     <Field Name="Enable I 2 of 5">0</Field>
+     <Group Name="Options">
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B2</Field>
+     </Group>
+    </Group>
+    <Group Name="Code 93">
+     <Field Name="Enable Code 93">0</Field>
+     <Group Name="Options">
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">1</Field>
+      <Field Name="Length 2">1</Field>
+      <Field Name="Length 3">1</Field>
+      <Field Name="User defined symbology ID">B6</Field>
+     </Group>
+    </Group>
+    <Group Name="Codabar">
+     <Field Name="Enable Codabar">0</Field>
+     <Group Name="Options">
+      <Field Name="Start/Stop transmit">0</Field>
+      <Field Name="CLSI library system">0</Field>
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Concatenation">0</Field>
+      <Field Name="Concatenation mode">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B7</Field>
+     </Group>
+    </Group>
+    <Group Name="Code 2 of 5">
+     <Field Name="Enable Code 2 of 5">0</Field>
+     <Group Name="Options">
+      <Field Name="Format">0</Field>
+      <Field Name="Verify check digit">0</Field>
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B5</Field>
+     </Group>
+    </Group>
+    <Group Name="MSI">
+     <Field Name="Enable MSI">0</Field>
+     <Group Name="Options">
+      <Field Name="Verify check digit">1</Field>
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B8</Field>
+     </Group>
+    </Group>
+    <Group Name="Plessey">
+     <Field Name="Enable Plessey">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">5</Field>
+      <Field Name="Length 2">5</Field>
+      <Field Name="Length 3">5</Field>
+      <Field Name="User defined symbology ID">C2</Field>
+     </Group>
+    </Group>
+    <Group Name="Code 11">
+     <Field Name="Enable Code 11">0</Field>
+     <Group Name="Options">
+      <Field Name="Verify check digit">1</Field>
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">2</Field>
+      <Field Name="Length 2">2</Field>
+      <Field Name="Length 3">2</Field>
+      <Field Name="User defined symbology ID">C1</Field>
+     </Group>
+    </Group>
+    <Group Name="Matrix 2 of 5">
+     <Field Name="Enable Matrix 2 of 5">0</Field>
+     <Group Name="Options">
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">6</Field>
+      <Field Name="Length 2">6</Field>
+      <Field Name="Length 3">6</Field>
+      <Field Name="User defined symbology ID">B4</Field>
+     </Group>
+    </Group>
+    <Group Name="Telepen">
+     <Field Name="Enable Telepen">0</Field>
+     <Group Name="Options">
+      <Field Name="Format">0</Field>
+      <Field Name="Length mode">0</Field>
+      <Field Name="Length 1">1</Field>
+      <Field Name="Length 2">1</Field>
+      <Field Name="Length 3">1</Field>
+      <Field Name="User defined symbology ID">C6</Field>
+     </Group>
+    </Group>
+    <Group Name="PDF417">
+     <Field Name="Enable PDF417">1</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C7</Field>
+      <Group Name="Macro PDF417">
+       <Field Name="Control header transmission">0</Field>
+       <Field Name="Optional fields file name xmit">0</Field>
+       <Field Name="Segment count transmitted">0</Field>
+       <Field Name="Time stamp transmitted">0</Field>
+       <Field Name="Sender transmitted">0</Field>
+       <Field Name="Addressee transmitted">0</Field>
+       <Field Name="File size transmitted">0</Field>
+       <Field Name="Checksum transmitted">0</Field>
+      </Group>
+     </Group>
+    </Group>
+    <Group Name="Micro PDF417">
+     <Field Name="Enable Micro PDF417">0</Field>
+     <Group Name="Options">
+      <Field Name="MicroPDF Code 128 emulation">0</Field>
+      <Field Name="User defined symbology ID">C8</Field>
+     </Group>
+    </Group>
+    <Group Name="Maxicode">
+     <Field Name="Enable Maxicode">0</Field>
+     <Group Name="Options">
+      <Field Name="Mode 0">0</Field>
+      <Field Name="User defined symbology ID">D2</Field>
+     </Group>
+    </Group>
+    <Group Name="DataMatrix">
+     <Field Name="Enable DataMatrix">1</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">D0</Field>
+     </Group>
+    </Group>
+    <Group Name="QR Code">
+     <Field Name="Enable QR Code">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">D1</Field>
+     </Group>
+    </Group>
+    <Group Name="RSS 14">
+     <Field Name="Enable RSS 14">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C3</Field>
+     </Group>
+    </Group>
+    <Group Name="RSS Limited">
+     <Field Name="Enable RSS Limited">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C4</Field>
+     </Group>
+    </Group>
+    <Group Name="RSS Expanded">
+     <Field Name="Enable RSS Expanded">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">C5</Field>
+     </Group>
+    </Group>
+    <Group Name="Codablock A">
+     <Field Name="Enable Codablock A">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">K0</Field>
+     </Group>
+    </Group>
+    <Group Name="Codablock F">
+     <Field Name="Enable Codablock F">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">K1</Field>
+     </Group>
+    </Group>
+    <Group Name="EAN.UCC Composite">
+     <Field Name="Enable EAN.UCC Composite A/B">0</Field>
+     <Field Name="Enable EAN.UCC Composite C">0</Field>
+     <Field Name="Linear only xmit mode">0</Field>
+     <Field Name="UPC/EAN comp msg decode">2</Field>
+     <Field Name="A/B User defined symbology ID">G0</Field>
+     <Field Name="C User defined symbology ID">G1</Field>
+    </Group>
+    <Group Name="Postnet">
+     <Field Name="Enable Postnet">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P0</Field>
+     </Group>
+    </Group>
+    <Group Name="Planet">
+     <Field Name="Enable Planet">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P1</Field>
+     </Group>
+    </Group>
+    <Group Name="BPO">
+     <Field Name="Enable BPO">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P2</Field>
+     </Group>
+    </Group>
+    <Group Name="CanadaPost">
+     <Field Name="Enable CanadaPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">P6</Field>
+     </Group>
+    </Group>
+    <Group Name="AustraliaPost">
+     <Field Name="Enable AustraliaPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">P3</Field>
+     </Group>
+    </Group>
+    <Group Name="JapanPost">
+     <Field Name="Enable JapanPost">0</Field>
+     <Group Name="Options">
+      <Field Name="Transmit check digit">1</Field>
+      <Field Name="User defined symbology ID">P5</Field>
+     </Group>
+    </Group>
+    <Group Name="DutchPost">
+     <Field Name="Enable DutchPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">P4</Field>
+     </Group>
+    </Group>
+    <Group Name="KoreanPost">
+     <Field Name="Enable KoreanPost">0</Field>
+     <Group Name="Options">
+      <Field Name="User defined symbology ID">PK</Field>
+     </Group>
+    </Group>
+    <Group Name="Aztec">
+     <Field Name="Enable Aztec">0</Field>
+     <Group Name="Options">
+      <Field Name="Structured Append Mode">0</Field>
+      <Field Name="Runes">0</Field>
+      <Field Name="EAN128 Emulation">0</Field>
+      <Field Name="User defined symbology ID">D3</Field>
+     </Group>
+    </Group>
+    <Group Name="TLC 39">
+     <Field Name="Enable TLC 39">0</Field>
+     <Group Name="Options">
+      <Field Name="Linear only xmit mode">0</Field>
+      <Field Name="ECI Security">10</Field>
+      <Field Name="User defined symbology ID">H0</Field>
+     </Group>
+    </Group>
+   </Group>
+   <Group Name="Symbology Options">
+    <Field Name="Preamble"/>
+    <Field Name="Postamble"/>
+    <Field Name="Global symbology ID">0</Field>
+   </Group>
+   <Group Name="Scanner Settings">
+    <Field Name="Scanner model">SR Intermec Scanner</Field>
+    <Field Name="Triggering mode">1</Field>
+    <Field Name="Enable aimer">0</Field>
+    <Field Name="Hardware trigger">1</Field>
+    <Field Name="T1 duration">2</Field>
+    <Field Name="Spotter beam duration">500</Field>
+    <Field Name="Turn off after good read">1</Field>
+    <Field Name="Number of good read beeps">1</Field>
+    <Field Name="Energy saver mode">0</Field>
+   </Group>
+   <Group Name="Scanner Port Settings">
+    <Field Name="Baud rate">10</Field>
+   </Group>
+   <Group Name="Imager Settings">
+    <Field Name="Predefined Modes">1</Field>
+   </Group>
+   <Group Name="Decode Security">
+    <Field Name="Consecutive data validation">0</Field>
+    <Field Name="Identical consecutive timeout">300</Field>
+    <Field Name="Diff consecutive timeout">0</Field>
+    <Field Name="Center Decoding">0</Field>
+    <Field Name="Center Decoding Tolerance">0</Field>
+   </Group>
+  </Group>
+  <Group Name="Virtual Wedge">
+   <Field Name="Virtual wedge">1</Field>
+   <Field Name="Grid"/>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="RFID">
+  <Field Name="Enable RFID Service">1</Field>
+  <Group Name="DCE">
+   <Field Name="Allow External BRI Connections">1</Field>
+   <Field Name="BRI TCP Port">2189</Field>
+   <Field Name="Enable Logging">0</Field>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="Communications">
+  <Field Name="AdapterType" Path="\Communications\AdapterType">2</Field>
+  <Field Name="Disabled By Remote Policy" Path="\Device Settings\Features Disabled by Policy\Wifi Disabled">0</Field>
+  <Group Name="802.11 Radio">
+   <Field Name="Funk Installed">1</Field>
+   <Field Name="ZeroConfig">Off</Field>
+   <Field Name="ChangeSettingsAllowed">1</Field>
+   <Field Name="Radio Measurement">250</Field>
+   <Field Name="RadioBandsEnabled">3</Field>
+   <Field Name="Radio Bands">3</Field>
+   <Field Name="Radio Enabled">1</Field>
+  </Group>
+  <Group Name="IP Settings">
+   <Field Name="DHCP" Path="\Communications\802.11 Radio\IP Settings\DHCP">1</Field>
+   <Field Name="DHCP Client Identifier" Path="\Communications\802.11 Radio\IP Settings\DHCP Client Identifier"/>
+   <Field Name="IP Address" Path="\Communications\802.11 Radio\IP Settings\IP Address" DeviceUnique="true">192.168.22.27</Field>
+   <Field Name="Subnet Mask" Path="\Communications\802.11 Radio\IP Settings\Subnet Mask" DeviceUnique="true">255.255.255.0</Field>
+   <Field Name="Default Router" Path="\Communications\802.11 Radio\IP Settings\Default Router" DeviceUnique="true">0.0.0.0</Field>
+  </Group>
+  <Group Name="Name Servers">
+   <Field Name="Primary DNS" Path="\Communications\802.11 Radio\IP Settings\Primary DNS" DeviceUnique="true"/>
+   <Field Name="Secondary DNS" Path="\Communications\802.11 Radio\IP Settings\Secondary DNS" DeviceUnique="true"/>
+   <Field Name="Primary WINS" Path="\Communications\802.11 Radio\IP Settings\Primary WINS" DeviceUnique="true"/>
+   <Field Name="Secondary WINS" Path="\Communications\802.11 Radio\IP Settings\Secondary WINS" DeviceUnique="true"/>
+  </Group>
+  <Group Name="Ethernet Adapter">
+   <Group Name="IP Settings">
+    <Field Name="DHCP">1</Field>
+    <Field Name="DHCP Client Identifier"/>
+    <Field Name="IP Address" DeviceUnique="true"/>
+    <Field Name="Subnet Mask" DeviceUnique="true"/>
+    <Field Name="Default Router" DeviceUnique="true"/>
+    <Field Name="Primary DNS" DeviceUnique="true"/>
+    <Field Name="Secondary DNS" DeviceUnique="true"/>
+    <Field Name="Primary WINS" DeviceUnique="true"/>
+    <Field Name="Secondary WINS" DeviceUnique="true"/>
+   </Group>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="Funk Security">
+  <Field Name="ActiveProfile">Profile_1</Field>
+  <Field Name="ImportRoot" Path="\Communications\802.11 Radio\Certificates\Import Root Certificates">False</Field>
+  <Field Name="ImportUser" Path="\Communications\802.11 Radio\Certificates\Import User Certificates">False</Field>
+  <Field Name="ImportPac" Path="\Communications\802.11 Radio\Certificates\Import Pac Files">False</Field>
+  <Group Name="Profile" Instance="Profile_1">
+   <Field Name="ProfileLabel">Profile_1</Field>
+   <Field Name="NetworkType">Infrastructure</Field>
+   <Field Name="DSChannel">3</Field>
+   <Field Name="SSID">INTERMEC2</Field>
+   <Field Name="PSMode">Enabled(Fast PSP)</Field>
+   <Field Name="8021x">None</Field>
+   <Field Name="Association">Open</Field>
+   <Field Name="Encryption">None</Field>
+   <Field Name="DefaultKeyID">1</Field>
+   <Field Name="PasswordPrompt">Disabled</Field>
+   <Field Name="UserName">anonymous</Field>
+   <Field Name="InnerAuthenticationTTLS">MS-Chapv2</Field>
+   <Field Name="TTLSOutername"/>
+   <Field Name="InnerEAP">EAP/MD5</Field>
+   <Field Name="InnerAuthenticationPEAP">EAP/MS-Chapv2</Field>
+   <Field Name="SubjectName"/>
+   <Field Name="ValidateServerCert">No</Field>
+   <Field Name="CN1"/>
+   <Field Name="CN2"/>
+   <Field Name="MixedCell">On</Field>
+   <Field Name="CCKM">Off</Field>
+   <Field Name="AutoProvision">On</Field>
+   <Field Name="NewPACPrompt">Off</Field>
+   <Field Name="ReprovisionPrompt">Off</Field>
+   <Field Name="Logging">Off</Field>
+  </Group>
+  <Group Name="Profile" Instance="Profile_2">
+   <Field Name="ProfileLabel">Profile_2</Field>
+   <Field Name="NetworkType">Infrastructure</Field>
+   <Field Name="DSChannel">3</Field>
+   <Field Name="SSID">INTERMEC</Field>
+   <Field Name="PSMode">Enabled(Fast PSP)</Field>
+   <Field Name="8021x">None</Field>
+   <Field Name="Association">Open</Field>
+   <Field Name="Encryption">None</Field>
+   <Field Name="DefaultKeyID">1</Field>
+   <Field Name="PasswordPrompt">Disabled</Field>
+   <Field Name="UserName">anonymous</Field>
+   <Field Name="InnerAuthenticationTTLS">MS-Chapv2</Field>
+   <Field Name="TTLSOutername"/>
+   <Field Name="InnerEAP">EAP/MD5</Field>
+   <Field Name="InnerAuthenticationPEAP">EAP/MS-Chapv2</Field>
+   <Field Name="SubjectName"/>
+   <Field Name="ValidateServerCert">No</Field>
+   <Field Name="CN1"/>
+   <Field Name="CN2"/>
+   <Field Name="MixedCell">On</Field>
+   <Field Name="CCKM">Off</Field>
+   <Field Name="AutoProvision">On</Field>
+   <Field Name="NewPACPrompt">Off</Field>
+   <Field Name="ReprovisionPrompt">Off</Field>
+   <Field Name="Logging">Off</Field>
+  </Group>
+  <Group Name="Profile" Instance="Profile_3">
+   <Field Name="ProfileLabel">Profile_3</Field>
+   <Field Name="NetworkType">Infrastructure</Field>
+   <Field Name="DSChannel">3</Field>
+   <Field Name="SSID">INTERMEC</Field>
+   <Field Name="PSMode">Enabled(Fast PSP)</Field>
+   <Field Name="8021x">None</Field>
+   <Field Name="Association">Open</Field>
+   <Field Name="Encryption">None</Field>
+   <Field Name="DefaultKeyID">1</Field>
+   <Field Name="PasswordPrompt">Disabled</Field>
+   <Field Name="UserName">anonymous</Field>
+   <Field Name="InnerAuthenticationTTLS">MS-Chapv2</Field>
+   <Field Name="TTLSOutername"/>
+   <Field Name="InnerEAP">EAP/MD5</Field>
+   <Field Name="InnerAuthenticationPEAP">EAP/MS-Chapv2</Field>
+   <Field Name="SubjectName"/>
+   <Field Name="ValidateServerCert">No</Field>
+   <Field Name="CN1"/>
+   <Field Name="CN2"/>
+   <Field Name="MixedCell">On</Field>
+   <Field Name="CCKM">Off</Field>
+   <Field Name="AutoProvision">On</Field>
+   <Field Name="NewPACPrompt">Off</Field>
+   <Field Name="ReprovisionPrompt">Off</Field>
+   <Field Name="Logging">Off</Field>
+  </Group>
+  <Group Name="Profile" Instance="Profile_4">
+   <Field Name="ProfileLabel">Profile_4</Field>
+   <Field Name="NetworkType">Infrastructure</Field>
+   <Field Name="DSChannel">3</Field>
+   <Field Name="SSID">INTERMEC</Field>
+   <Field Name="PSMode">Enabled(Fast PSP)</Field>
+   <Field Name="8021x">None</Field>
+   <Field Name="Association">Open</Field>
+   <Field Name="Encryption">None</Field>
+   <Field Name="DefaultKeyID">1</Field>
+   <Field Name="PasswordPrompt">Disabled</Field>
+   <Field Name="UserName">anonymous</Field>
+   <Field Name="InnerAuthenticationTTLS">MS-Chapv2</Field>
+   <Field Name="TTLSOutername"/>
+   <Field Name="InnerEAP">EAP/MD5</Field>
+   <Field Name="InnerAuthenticationPEAP">EAP/MS-Chapv2</Field>
+   <Field Name="SubjectName"/>
+   <Field Name="ValidateServerCert">No</Field>
+   <Field Name="CN1"/>
+   <Field Name="CN2"/>
+   <Field Name="MixedCell">On</Field>
+   <Field Name="CCKM">Off</Field>
+   <Field Name="AutoProvision">On</Field>
+   <Field Name="NewPACPrompt">Off</Field>
+   <Field Name="ReprovisionPrompt">Off</Field>
+   <Field Name="Logging">Off</Field>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="Bluetooth">
+  <Field Name="Power">Off</Field>
+  <Group Name="Bluetooth">
+   <Field Name="Disabled By Remote Policy" Path="\Device Settings\Features Disabled by Policy\Bluetooth Disabled">0</Field>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="IDLApplicationSupportAndVersioning">
+  <Group Name="PSK Settings">
+   <Group Name="Remote Connection">
+    <Field Name="Host IP" Path="\Communications\PSK Settings\Remote Connection\Host IP">0.0.0.0</Field>
+    <Field Name="Host Port" Path="\Communications\PSK Settings\Remote Connection\Host Port">5555</Field>
+   </Group>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="Device Settings">
+  <Field Name="Camera Disabled" Path="\Device Settings\Features Disabled by Policy\Camera is Disabled">0</Field>
+  <Group Name="PSK Settings">
+   <Group Name="Serial Port">
+    <Field Name="Baud (bps)" Path="\Communications\PSK Settings\Serial Port\Baud (bps)">10</Field>
+    <Field Name="Parity" Path="\Communications\PSK Settings\Serial Port\Parity">1</Field>
+    <Field Name="Data Bits" Path="\Communications\PSK Settings\Serial Port\Data Bits">7</Field>
+    <Field Name="Stop Bits" Path="\Communications\PSK Settings\Serial Port\Stop Bits">1</Field>
+    <Field Name="Flow Control" Path="\Communications\PSK Settings\Serial Port\Flow Control">0</Field>
+    <Field Name="Protocol" Path="\Communications\PSK Settings\Serial Port\Protocol">0</Field>
+    <Field Name="EOM1" Path="\Communications\PSK Settings\Serial Port\EOM1">\x03</Field>
+    <Field Name="EOM2" Path="\Communications\PSK Settings\Serial Port\EOM2">\xFFFFFFFF</Field>
+    <Field Name="SOM" Path="\Communications\PSK Settings\Serial Port\SOM">\x02</Field>
+    <Field Name="Reader Command" Path="\Communications\PSK Settings\Serial Port\Reader Command">2</Field>
+    <Field Name="LRC" Path="\Communications\PSK Settings\Serial Port\LRC">0</Field>
+    <Field Name="Handshake" Path="\Communications\PSK Settings\Serial Port\Handshake">0</Field>
+   </Group>
+  </Group>
+  <Group Name="Time Zone">
+   <Field Name="Adjust for Daylight Time">0</Field>
+  </Group>
+  <Group Name="Good Read Settings">
+   <Group Name="Internal Scanner">
+    <Field Name="Beep or Vibrate">1</Field>
+    <Field Name="Good Read Light">1</Field>
+   </Group>
+   <Group Name="Tethered Scanner">
+    <Field Name="Beep or Vibrate">1</Field>
+    <Field Name="Good Read Light">1</Field>
+   </Group>
+   <Group Name="Bluetooth Scanner">
+    <Field Name="Beep or Vibrate">1</Field>
+    <Field Name="Good Read Light">1</Field>
+   </Group>
+  </Group>
+  <Group Name="Beeper">
+   <Field Name="Volume">3</Field>
+  </Group>
+  <Group Name="Display">
+   <Field Name="Screen Rotation">0</Field>
+   <Group Name="Backlight">
+    <Group Name="Battery Power">
+     <Field Name="Backlight turns off after">30</Field>
+     <Field Name="Backlight On Tap">1</Field>
+     <Field Name="DC Backlight level">5</Field>
+    </Group>
+    <Group Name="External Power">
+     <Field Name="Backlight turns off after">60</Field>
+     <Field Name="Backlight On Tap">1</Field>
+     <Field Name="AC Backlight level">5</Field>
+    </Group>
+   </Group>
+  </Group>
+  <Group Name="Keypad">
+   <Group Name="Scan Button Remapping">
+    <Field Name="0">3</Field>
+    <Field Name="3">1</Field>
+   </Group>
+  </Group>
+  <Group Name="Power Management">
+   <Group Name="Battery Power">
+    <Field Name="Device turns off after">2</Field>
+    <Field Name="Screen turns off after">60</Field>
+   </Group>
+   <Group Name="External Power">
+    <Field Name="Device turns off after">0</Field>
+    <Field Name="Screen turns off after">0</Field>
+   </Group>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="GPS">
+  <Field Name="GPS enabled" Path="\Communications\GPS enabled">0</Field>
+ </Subsystem>
+ <Subsystem Name="Printer">
+  <Field Name="Auto Detect Printer">1</Field>
+  <Field Name="Print Test Page">(0)Toggle to print</Field>
+ </Subsystem>
+ <Subsystem Name="Device Monitor">
+  <Field Name="Poll Period (min)">1</Field>
+  <Group Name="Threshold Values">
+   <Group Name="Subsystems" Instance="Battery">
+    <Group Name="Thresholds" Instance="Backup Battery Charge Remaining">
+     <Field Name="Value">10</Field>
+    </Group>
+    <Group Name="Thresholds" Instance="Main Battery Charge Remaining">
+     <Field Name="Value">10</Field>
+    </Group>
+   </Group>
+   <Group Name="Subsystems" Instance="Storage">
+    <Group Name="Thresholds" Instance="Storage Load">
+     <Field Name="Value">90</Field>
+    </Group>
+   </Group>
+   <Group Name="Subsystems" Instance="Memory">
+    <Group Name="Thresholds" Instance="Memory Load">
+     <Field Name="Value">90</Field>
+    </Group>
+   </Group>
+  </Group>
+ </Subsystem>
+ <Subsystem Name="IQueue">
+  <Field Name="Associated Server IP">192.168.22.1</Field>
+  <Field Name="Server Name">INTERMEC</Field>
+  <Field Name="Broadcast Name">INTERMEC</Field>
+  <Field Name="Keep Alive Ping Interval">30</Field>
+ </Subsystem>
+ <Subsystem Name="SS_Client">
+  <Group Name="Administrator">
+   <Field Name="Name"/>
+   <Field Name="Phone"/>
+   <Field Name="Email"/>
+  </Group>
+  <Group Name="Location">
+   <Field Name="Country"/>
+   <Field Name="State"/>
+   <Field Name="City"/>
+   <Field Name="Campus"/>
+   <Field Name="Detail"/>
+  </Group>
+ </Subsystem>
+</DevInfo>
