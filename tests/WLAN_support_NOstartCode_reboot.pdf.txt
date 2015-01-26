@@ -1,0 +1,11 @@
+logInput: <DevInfo><Subsystem Name="Funk Security">
+  <Group Name="Profile" Instance="Profile_1">
+    <Field Name="SSID">SUPPORT</Field>
+    <Field Name="8021x">None</Field>
+    <Field Name="Association">WPA</Field>
+    <Field Name="Encryption">TKIP</Field>
+    <Field Name="PreSharedKey" Encrypt="binary.base64">dzcrvPwmAWjcJAOO75RQEQ==</Field>
+  </Group>
+</Subsystem><Subsystem Name="IQueue">
+  <Field Name="Associated Server IP">192.168.128.5</Field>
+</Subsystem></DevInfo>|Notes|password|True|False|3

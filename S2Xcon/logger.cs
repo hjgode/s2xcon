@@ -17,13 +17,16 @@ namespace Logger
                 else
                 {
                     string s;
-                    s = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                    if (s.ToLower().StartsWith("file"))
-                    {
-                        Uri uri = new Uri(s);
-                        s = uri.AbsolutePath;
-                    }
-                    if (!s.EndsWith(@"\"))
+                    //s = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    s = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    //if (s.ToLower().StartsWith("file"))
+                    //{
+                    //    Uri uri = new Uri(s);
+                    //    s = uri.AbsolutePath;
+                    //    if (!s.EndsWith("/"))
+                    //        s += "/";
+                    //}
+                    if (!s.EndsWith(@"\") && !s.EndsWith("/"))
                         s += @"\";
                     _LogPath = s;
                     return _LogPath;
@@ -55,6 +58,32 @@ namespace Logger
             
             System.IO.StreamWriter sw = new System.IO.StreamWriter(LogPath + _LogFile, true);
             sw.WriteLine(s);
+            sw.Flush();
+            sw.Close();
+        }
+
+        public static void logInput(string sData, string sMessage, string sPassword, bool bNostart, bool bNoReboot, int iVersion)
+        {
+            string sLogStr = "logInput: " + sData + "|" +
+                sMessage + "|" +
+                sPassword + "|" +
+                bNostart.ToString() + "|" +
+                bNoReboot.ToString()+"|"+
+                iVersion.ToString();
+
+            System.Diagnostics.Debug.WriteLine(sLogStr);
+            string sPath;
+            sPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            if (sPath.ToLower().StartsWith("file"))
+            {
+                Uri uri = new Uri(sPath);
+                sPath = uri.AbsolutePath;
+            }
+            if (!sPath.EndsWith(@"\"))
+                sPath += @"\";
+
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(sPath + "inputstr.txt", false);
+            sw.WriteLine(sLogStr);
             sw.Flush();
             sw.Close();
         }

@@ -18,7 +18,9 @@ namespace S2Xcon
 
         public static bool IsJsonString(string input)
         {
+#if DEBUG
             Logger.logger.add2log("IsJsonString() in=" + input);
+#endif
             bool result;
             try
             {
@@ -29,12 +31,16 @@ namespace S2Xcon
             {
                 result = false;
             }
+#if DEBUG
             Logger.logger.add2log("IsJsonString() out=" + result);
+#endif
             return result;
         }
         public static bool IsJsonActionValid(string input)
         {
+#if DEBUG
             Logger.logger.add2log("IsJsonActionValid()");
+#endif
             try
             {
                 JObject jObject = JObject.Parse(input);
@@ -64,7 +70,9 @@ namespace S2Xcon
         /// <returns></returns>
         internal static string TransformJsonText(string input)
         {
+#if DEBUG
             Logger.logger.add2log("TransformJsonText() in=" + input);
+#endif
             string result = input;
             try
             {
@@ -109,7 +117,9 @@ namespace S2Xcon
             catch (Exception)
             {
             }
+#if DEBUG
             Logger.logger.add2log("TransformJsonText() out=" + result);
+#endif
             return result;
         }
         internal static bool TestStringWithinJson(string input)
@@ -175,7 +185,9 @@ namespace S2Xcon
         }
         public static string TrimJsonWhitespace(string input)
         {
+#if DEBUG
             Logger.logger.add2log("TrimJsonWhitespace() in=" + input);
+#endif
             string result = input;
             try
             {
@@ -185,7 +197,9 @@ namespace S2Xcon
             catch (Exception)
             {
             }
+#if DEBUG
             Logger.logger.add2log("TrimJsonWhitespace() out=" + result);
+#endif
             return result;
         }
         public static bool IsXmlString(string input)
@@ -226,7 +240,9 @@ namespace S2Xcon
         /// <returns></returns>
         public static string PrepareXmlContent(string xml)
         {
+#if DEBUG
             Logger.logger.add2log("PrepareXmlContent() in=" + xml);
+#endif
             string result = xml;
             try
             {
@@ -245,12 +261,16 @@ namespace S2Xcon
             catch (Exception)
             {
             }
+#if DEBUG
             Logger.logger.add2log("PrepareXmlContent out=" + result);
+#endif
             return result;
         }
         public static string WrapXmlInDevInfo(string input)
         {
+#if DEBUG
             Logger.logger.add2log("WrapXmlInDevInfo() in=" + input);
+#endif
             string result = input;
             try
             {
@@ -267,12 +287,16 @@ namespace S2Xcon
             }
             catch (XmlException)
             {
+#if DEBUG
                 result = "<DevInfo>" + input + "</DevInfo>";
+#endif
             }
             catch (Exception)
             {
             }
+#if DEBUG
             Logger.logger.add2log("WrapXmlInDevInfo() out=" + result);
+#endif
             return result;
         }
 

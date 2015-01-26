@@ -1,0 +1,12 @@
+logInput: <Subsystem Name="SS_Client">
+  <Group Name="FileSystem">
+    <Group Name="Download">
+      <Field Name="Url">ftp://199.64.70.66/loadurl/scanngo.xml</Field>
+    </Group>
+  </Group>
+  <Subsystem Name="SS_Client">
+    <Group Name="Download">
+      <Field Name="ProcessNow">True</Field>
+    </Group>
+  </Subsystem>
+</Subsystem>|Notes|password|True|True|3

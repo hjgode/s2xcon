@@ -18,7 +18,7 @@ namespace S2Xcon
         static int Main(string[] args)
         {
             int iReturn=0;
-            Console.WriteLine("\r\nS2Xcon started");
+            Console.WriteLine("\r\nS2Xcon "+ System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString()+ " started");
             var options = new Options();
             Console.WriteLine("parsing options...");
             var parser = new CommandLine.Parser();//with => with.HelpWriter = Console.Error);
@@ -35,7 +35,7 @@ namespace S2Xcon
 
         private static int Run(Options options, string[] args)
         {
-            int iReturn = 0;
+            int iReturn = -99;
 
             Console.WriteLine("barcode_type: {0}", options.barcode_type);
             if (options.barcode_type == null)
@@ -64,6 +64,12 @@ namespace S2Xcon
                 {
                     logger.setLogName(options.logfile);
                 }
+                else
+                {
+                    string sP = logger.LogPath;
+                    logger.setLogPath(sP);
+                    logger.setLogName(options.logfile);
+                }
             }
             else//NO log file is specified
             {
@@ -71,19 +77,32 @@ namespace S2Xcon
                 if(options.InputFile!=null){
                     if(System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(options.InputFile))){
                         options.logfile=System.IO.Path.GetFileNameWithoutExtension(options.InputFile) + ".log";
+                        logger.setLogName(options.logfile);
                     }
+                    else
+                    {
+                        options.logfile = options.InputFile + ".log";
+                        logger.setLogName(options.logfile);
+                    }
+                }
+                else
+                {
+                    //use name of output + .log
+                    options.logfile = options.OutputFile + ".log";
+                    logger.setLogName(options.logfile);
                 }
             }
             if (options.logfile == null)
             {
                 //use default log
-                options.logfile = "Default.log";                
+                options.logfile = "Default.log";
                 logger.setLogName(options.logfile);
             }
 
+
             Console.WriteLine("using log file: '" + options.logfile + "'");
             logger.add2log("\r\n" + DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() +
-                " +++ S2Xcon started with: ");
+                " +++ S2Xcon " + System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString() + " started with: ");
             string sArg="";
             foreach (string s in args)
                 sArg += s + " ";
@@ -110,6 +129,20 @@ namespace S2Xcon
                 options.xmlDownloadURL,
                 options.andDownloadURL));
 
+            if (options.barcode_type != null)
+            {
+                try
+                {
+                    Enum.Parse(typeof(Options.BarcodeType), options.barcode_type);
+                }
+                catch (Exception)
+                {
+                    logger.add2log("unknown type: " + options.barcode_type);
+                    Console.WriteLine("unknown type: " + options.barcode_type);
+                    iReturn = -12;
+                    goto end_parsing;
+                }
+            }
 
             //=============== process xml download ====================
             if (options.barcode_type == Options.BarcodeType.DOWNXML.ToString())
@@ -255,10 +288,15 @@ namespace S2Xcon
                 if (System.IO.File.Exists(sFilename))
                 {
                     string sPath = System.IO.Path.GetDirectoryName(sFilename);
-                    if (!sPath.EndsWith(@"\"))
-                        sPath += @"\";
-
-
+                    if (sPath != null && sPath != "")
+                    {
+                        if (!sPath.EndsWith(@"\"))
+                            sPath += @"\";
+                    }
+                    else
+                    {
+                        sPath = logger.LogPath;
+                    }
                     // # filtering communication data only does only work within S2Xconsole of an installed SmartSystems server
                     //CreateBarcodes cBarcode = new CreateBarcodes(sFilename, false);
                     Console.WriteLine("creating page data...'"+sFilename+"'");

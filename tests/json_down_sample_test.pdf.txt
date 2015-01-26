@@ -1,0 +1,1 @@
+logInput: {"v":1.0,"r":["LoadSoftwareFromUrl"],"w":{"textfile sample/textfile.txt.txt":"textfile sample"},"o":"LoadSoftwareFromUrl","c":[{"s":"LoadSoftwareFromUrl","d":"DestinationForTextFileFromURL/test"}]}|Notes|password|True|False|4

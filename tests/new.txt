@@ -1,0 +1,1 @@
+s2xcon -i "wifi_json.config.json"  -m "Notes" -p "password" -o "wifi_json.config.json_password_Notes_test.pdf"

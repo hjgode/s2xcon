@@ -1,0 +1,3 @@
+REM logInput: {"v":1.0,"r":["LoadSoftwareFromUrl"],"w":{"TextFileDestination/textfile.txt.txt":"textfile sample"},"o":"LoadSoftwareFromUrl","c":[{"s":"LoadSoftwareFromUrl","d":"DestinationForTextFileFromURL/test"}]}|Notes|password|True|False|4
+
+s2xcon -t DOWNAND -a "LoadSoftwareFromUrl^TextFileDestination/textfile.txt.txt^textfile sample^LoadSoftwareFromUrl^LoadSoftwareFromUrl^DestinationForTextFileFromURL/test" -m Notes -p password -o json_down_sample_test.pdf

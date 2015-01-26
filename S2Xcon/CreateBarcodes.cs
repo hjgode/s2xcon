@@ -72,7 +72,9 @@ namespace S2Xcon
 
         public string GetBarCodeData(string sFileName)
         {
+#if DEBUG
             logger.add2log("GetBarCodeData() in=" + sFileName);
+#endif
             string text = string.Empty;
             text = this.GetBrowseData(sFileName);
             //empty = string.Format("<DevInfo>{0}</DevInfo>", empty);
@@ -80,9 +82,14 @@ namespace S2Xcon
             {
                 text = Common.WrapXmlInDevInfo(text);
             }
-
+            else
+            {
+                text=Common.TrimJsonWhitespace(text);
+            }
+#if DEBUG
             Logger.logger.add2log("MainViewModel::GetBarCodeData() out=" + text);
             logger.add2log("GetBarCodeData() out=" + text);
+#endif
             return text;
         }
 
@@ -93,7 +100,9 @@ namespace S2Xcon
         /// <returns></returns>
         private string GetBrowseData(string sFileName)
         {
+#if DEBUG
             Logger.logger.add2log("CreateBarcodes::GetBrowseData()");
+#endif
             if (!string.IsNullOrEmpty(sFileName))
             {
                 try
@@ -216,19 +225,27 @@ namespace S2Xcon
         /// <returns></returns>
 		private string PageData()
 		{
+#if DEBUG
             Logger.logger.add2log("CreateBarcodes::PageData()");
+#endif
 			if (!this.IsNoReboot || Common.UsingJson)
 			{
+#if DEBUG
                 Logger.logger.add2log("CreateBarcodes::PageData() return null");
+#endif
 				return string.Empty;
 			}
+#if DEBUG
             Logger.logger.add2log("CreateBarcodes::PageData() return '" + "<Subsystem Name=\"SS_Client\"><Group Name=\"Download\"><Field Name=\"ProcessNow\">True</Field></Group></Subsystem>"+"'");
+#endif
 			return "<Subsystem Name=\"SS_Client\"><Group Name=\"Download\"><Field Name=\"ProcessNow\">True</Field></Group></Subsystem>";
 		}
 
         public S2X.S2X Update()
         {
+#if DEBUG
             Logger.logger.add2log("CreateBarcodes::Update()");
+#endif
             S2X.S2X s2x;
             try
             {
@@ -259,10 +276,13 @@ namespace S2Xcon
                     Symbol symbol = (Symbol)Enum.Parse(typeof(Symbol), str1);
 
                     s2x.SetSourceName(Common.GetFullFooterAddition());
+
                     s2x.PrintPages(this.Instruction, this.Password, text2, symbol, this.VersionNumber);
+                    logger.logInput(text2, this.Instruction, this.Password, s2x.IsNoStartBarcode, s2x.IsNoReboot, this.VersionNumber);
 
                     if (symbol == Symbol.PDF417)
                     {
+#if DEBUG
                         Logger.logger.add2log(string.Format(
                             "data={0}\r\n instructions={1}\r\n pass={2}\r\n version={3}\r\nCommon.UsingJson={4}\r\nSetSourceName={5}\r\nIsNoReboot={6}\r\nIsNoStartBarcode={7}",
                             text2,
@@ -273,6 +293,7 @@ namespace S2Xcon
                             Common.GetFullFooterAddition(),
                             s2x.IsNoReboot,
                             s2x.IsNoStartBarcode));
+#endif
                     }
 
                     this.barcodeResult[str1] = s2x;
@@ -286,7 +307,9 @@ namespace S2Xcon
                         this.EstimatedCode128 = str2;
                     }
                 }
-                logger.add2log("PDF will be " + EstimatedPDF417 + " pages");
+#if DEBUG
+                logger.add2log("PDF will have " + EstimatedPDF417 + " barcodes");
+#endif
                 logger.add2log("writing temp file");
                 System.IO.File.WriteAllText(System.IO.Path.GetTempFileName(), text2);
                 string name = Enum.GetName(typeof(Symbol), this._BarcodeType);

@@ -7,7 +7,7 @@ S2Xcon
 	application to automate configuration barcodes for ITC devices
 	creates pdf with name of input file and log file (always append content)
 	The input file should be a reduced ITC backup settings file.
-		Example:
+		XML Example:
 		===========================================================================
 		<?xml version="1.0" encoding="UTF-8" ?> 
 		 <DevInfo Action="Set" Persist="true">
@@ -26,7 +26,7 @@ S2Xcon
 		</DevInfo>
 		===========================================================================
 
-	The intention is to use s2xcon with different xml config files and simply get the
+	The intention is to use s2xcon with different communication config files and simply get the
 	configuartion barcodes inside a PDF file and a log file, all with the same base name. In example:
 		s2xcon -i E:\WLAN_support.xml
 	creates a new PDF named
@@ -34,6 +34,11 @@ S2Xcon
 	and a log file named
 		E:\WLAN_support.log
 	for later use.
+
+	(v2.0.0.0):
+	Further you can create configuration barcodes with download locations for Windows Mobile and Android devices 
+	for Android use -t DOWNAND and -a "<argument list>"
+	for Windows Mobile use -t DOWNXML and -x "<donwload URL>"
 
 run
 	arguments
@@ -52,6 +57,8 @@ run
 
 		-i FILE, --input=FILE           Input file with data to process. No
 										default.
+										If no output is defined the name of the input file is used and output 
+										is saved as PDF in exe dir or within path of input file
 
 		-o FILE, --output=FILE          Output FILE with processed data (default:
 										name of input as .pdf).
@@ -61,7 +68,7 @@ run
 
 		-p STRING, --password=STRING    Use password. default: '' (no password)
 
-		-l STRING, --logfile=STRING     log file name. default: name of input as .log
+		-l STRING, --logfile=STRING     log file name. default: name of pdf output file plus '.log'
 
 		-n, --nostartcode               no start barcode. default: print start barcode
 										obsolete for JSON input files as these do never have a start barcode
@@ -70,15 +77,83 @@ run
 										obsolete for JSON input files as these do not reboot for comm settings barcodes
 
 		-x, --xmldown					use with -t DOWNXML. xml URL download location, ie ftp://199.64.70.66/loadurl/scanngo.xml
+										for DOWNXML an output PDF filename is mandatory
 
 		-a, --anddown					Android download set, ie 
 										SelectedURL^SelectedFolder^TextFile^TextFileDestination^SelectedOta^TextFileFromUrlDestination
 										(7 strings separated by the ^ symbol)
 										the ^ is used to separate the entries.
+										for DOWNAND an output PDF filename is mandatory
 
 		--help                          Display this help screen.
 
-	examples
+	EXAMPLES
+
+		s2xcon -t DOWNAND -a "LoadSoftwareFromUrl^TextFileDestination/textfile.txt.txt^textfile sample^LoadSoftwareFromUrl^LoadSoftwareFromUrl^DestinationForTextFileFromURL/test" -m Notes -p password -o json_down_sample_test.pdf -l json_down_sample_test.log
+			-t DOWNAND 
+				start a JSON download barcode creation
+			-a "LoadSoftwareFromUrl^TextFileDestination/textfile.txt.txt^textfile sample^LoadSoftwareFromUrl^LoadSoftwareFromUrl^DestinationForTextFileFromURL/test"
+				specify various download locations, files, destination and sources for a JSON download (see S2Xconsole GUI)
+					LoadSoftwareFromUrl^
+					TextFileDestination/textfile.txt.txt^
+					textfile sample^
+					LoadSoftwareFromUrl^
+					LoadSoftwareFromUrl^
+					DestinationForTextFileFromURL/test
+			-m Notes 
+				print 'Notes' onto the barcode sheet
+			-p password 
+				use 'password' to protect the reading of the code
+			-o json_down_sample_test.pdf
+				use 'json_down_sample_test.pdf' as output PDF name
+			-l json_down_sample_test.log
+				log to 'json_down_sample_test.log'
+
+		s2xcon -t DOWNXML -x "ftp://199.64.70.66/loadurl/scanngo.xml" -p password -m Notes -n -r -o loadurl_scanngo_xml_NOstartCode_NOreboot_test.pdf -l loadurl_scanngo_xml_NOstartCode_NOreboot_test.log
+			-t DOWNXML
+				start creation for a XML download barcode
+			-x "ftp://199.64.70.66/loadurl/scanngo.xml" 
+				the download location to be used
+			-p password 
+				use 'password' to protect the reading of the code
+			-m Notes 
+				print 'Notes' onto the barcode sheet
+			-n 
+				create barcode sheet with no Start barcode
+			-r 
+				create barcode sheet that performs no reboot after read
+			-o loadurl_scanngo_xml_NOstartCode_NOreboot_test.pdf
+				write PDF to 'loadurl_scanngo_xml_NOstartCode_NOreboot_test.pdf'
+			-l loadurl_scanngo_xml_NOstartCode_NOreboot_test.log
+				write log to loadurl_scanngo_xml_NOstartCode_NOreboot_test.log
+
+		s2xcon -i "WLAN_support.xml" -o "WLAN_support_NOstartCode_NOreboot_test.pdf" -m "Notes" -p "password" -n -r
+			-i "WLAN_support.xml" 
+				create a communication barcode for Windows Mobile device with comm settings from "WLAN_support.xml"
+			-o "WLAN_support_NOstartCode_NOreboot_test.pdf" 
+				write to WLAN_support_NOstartCode_NOreboot_test.pdf
+			-m "Notes" 
+				print 'Notes' onto barcode sheet
+			-p "password" 
+				require 'password' to perfom configuration on device
+			-n 
+				do not print a start barcode
+			-r
+				do not perform a reset after settings read
+
+		s2xcon -i "wifi_json.config.json"  -m "Notes" -p "password" -o "wifi_json.config.json_password_Notes_test.pdf"
+			-i "wifi_json.config.json"  
+				create a communication barcode for Android device with comm settings from "wifi_json.config.json"
+			-m "Notes" 
+				print 'Notes' onto barcode sheet
+			-p "password" 
+				require 'password' to perfom configuration on device
+			-o "wifi_json.config.json_password_Notes_test.pdf"
+				write to wifi_json.config.json_password_Notes_test.pdf
+
+########################################################################################################################
+
+	more examples
 		s2xcon -i E:\WLAN_support.xml
 			creates E:\WLAN_support.pdf and E:\WLAN_support.log with start barcode and reboot after scan
 
