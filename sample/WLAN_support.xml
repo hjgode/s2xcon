@@ -10,6 +10,6 @@
 </Group>
 </Subsystem>
 <Subsystem Name="IQueue">
-  	<Field Name="Associated Server IP">192.168.128.5</Field> 
+  	<Field Name="Associated Server IP">199.64.70.66</Field> 
 </Subsystem>
 </DevInfo>
