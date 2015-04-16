@@ -83,6 +83,8 @@ return codes
 		-1 means error in xml, see log for details
 		-2 means input file is not found
 		-3 error in command arguments
+		-6 PDF ouput file already exists
+		-99 OK with warning
 
 sample run screen
 	===========================================================================
